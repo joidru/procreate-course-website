@@ -1,7 +1,44 @@
 'use client'
 
-import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Menu, X, Sun, Moon } from 'lucide-react'
+
+function ThemeToggle() {
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark')
+
+  useEffect(() => {
+    const current = document.documentElement.classList.contains('light')
+      ? 'light'
+      : 'dark'
+    setTheme(current)
+  }, [])
+
+  function toggle() {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    const root = document.documentElement
+    root.classList.remove('light', 'dark')
+    root.classList.add(next)
+    try {
+      localStorage.setItem('theme', next)
+    } catch {}
+    setTheme(next)
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-label={theme === 'dark' ? 'Светлая тема' : 'Тёмная тема'}
+      className="flex h-11 w-11 items-center justify-center rounded-full text-foreground transition-colors hover:bg-accent"
+    >
+      {theme === 'dark' ? (
+        <Sun className="h-5 w-5" />
+      ) : (
+        <Moon className="h-5 w-5" />
+      )}
+    </button>
+  )
+}
 
 const nav = [
   { href: '#program', label: 'Программа' },
@@ -35,7 +72,8 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2">
+          <ThemeToggle />
           <a
             href="#pricing"
             className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 md:inline-flex"

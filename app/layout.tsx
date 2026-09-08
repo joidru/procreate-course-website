@@ -33,8 +33,23 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  themeColor: '#f5f1ea',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f5f1ea' },
+    { media: '(prefers-color-scheme: dark)', color: '#26221f' },
+  ],
 }
+
+const themeScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem('theme');
+    var theme = stored || 'dark';
+    var root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
+  } catch (e) {}
+})();
+`
 
 export default function RootLayout({
   children,
@@ -44,8 +59,12 @@ export default function RootLayout({
   return (
     <html
       lang="ru"
-      className={`light ${inter.variable} ${spaceGrotesk.variable} bg-background`}
+      className={`dark ${inter.variable} ${spaceGrotesk.variable} bg-background`}
+      suppressHydrationWarning
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="antialiased font-sans">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
