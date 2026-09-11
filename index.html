@@ -5,234 +5,245 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procreate Basics - Курс рисования от Евгении Гагариной</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-[#fafaf9] text-[#1a1a1a]">
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">Procreate Basics</div>
-            <ul class="nav-links">
-                <li><a href="#course">Курс</a></li>
-                <li><a href="#program">Программа</a></li>
-                <li><a href="#works">Работы</a></li>
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#pricing" class="cta-link">Начать</a></li>
+    <nav class="sticky top-0 bg-[rgba(250,250,249,0.95)] border-b border-[#e8e8e8] backdrop-blur-md z-50 py-5">
+        <div class="max-w-7xl mx-auto px-10 flex justify-between items-center">
+            <div class="text-lg font-bold tracking-tight">Procreate Basics</div>
+            <ul class="flex gap-12 items-center">
+                <li><a href="#course" class="text-[#1a1a1a] text-sm font-medium hover:text-[#666] transition-colors">Курс</a></li>
+                <li><a href="#program" class="text-[#1a1a1a] text-sm font-medium hover:text-[#666] transition-colors">Программа</a></li>
+                <li><a href="#works" class="text-[#1a1a1a] text-sm font-medium hover:text-[#666] transition-colors">Работы</a></li>
+                <li><a href="#about" class="text-[#1a1a1a] text-sm font-medium hover:text-[#666] transition-colors">Обо мне</a></li>
+                <li><a href="#pricing" class="bg-[#1a1a1a] text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-[#666] transition-all hover:-translate-y-0.5 shadow-md">Начать</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-label">PROCREATE / КУРС ЕВГЕНИИ ГАГАРИНОЙ</div>
-                <h1 class="hero-title">
+    <section class="py-32 px-10 max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 gap-24 items-center">
+            <div>
+                <div class="text-xs tracking-widest uppercase text-[#999] mb-8">PROCREATE / КУРС ЕВГЕНИИ ГАГАРИНОЙ</div>
+                <h1 class="text-7xl font-black leading-[1.15] mb-6 text-[#1a1a1a]">
                     Рисуйте<br>уверенно.<br>Создавайте<br>своё.
                 </h1>
-                <p class="hero-subtitle">Полный курс рисования в Procreate для начинающих. От основ формы и перспективы до профессиональных техник.</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary">Начать обучение</button>
-                    <a href="#program" class="btn btn-secondary">Посмотреть программу</a>
+                <p class="text-lg text-[#666] leading-relaxed mb-10 max-w-md">Полный курс рисования в Procreate для начинающих. От основ формы и перспективы до профессиональных техник.</p>
+                <div class="flex gap-5 items-center">
+                    <button class="bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all">Начать обучение</button>
+                    <a href="#program" class="border-2 border-[#1a1a1a] text-[#1a1a1a] px-8 py-4 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-all">Посмотреть программу</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="hero-image-placeholder">
-                    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#f3e8ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#fce7f3;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <rect width="500" height="600" fill="url(#grad1)" rx="40"/>
-                        <circle cx="250" cy="150" r="80" fill="#e9d5ff" opacity="0.5"/>
-                        <path d="M 100 300 Q 250 200 400 350" stroke="#d8b4fe" stroke-width="4" fill="none"/>
-                        <rect x="150" y="400" width="200" height="120" fill="#fce7f3" rx="20" opacity="0.6"/>
-                    </svg>
-                </div>
+            <div class="flex justify-center">
+                <svg viewBox="0 0 500 600" class="w-full max-w-md" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#f3e8ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#fce7f3;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="500" height="600" fill="url(#grad1)" rx="40"/>
+                    <circle cx="250" cy="150" r="80" fill="#e9d5ff" opacity="0.5"/>
+                    <path d="M 100 300 Q 250 200 400 350" stroke="#d8b4fe" stroke-width="4" fill="none"/>
+                    <rect x="150" y="400" width="200" height="120" fill="#fce7f3" rx="20" opacity="0.6"/>
+                </svg>
             </div>
         </div>
     </section>
 
     <!-- Visual Statement -->
-    <section class="statement">
-        <div class="statement-content">
-            <h2>Procreate — это инструмент.<br>Рисование — это навык.</h2>
-        </div>
-        <div class="statement-gallery">
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
+    <section class="py-40 px-10 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-32">
+                <h2 class="text-5xl font-black text-[#1a1a1a]">Procreate — это инструмент.<br>Рисование — это навык.</h2>
+            </div>
+            <div class="grid grid-cols-3 gap-8">
+                <div class="aspect-square bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+                <div class="aspect-square bg-gradient-to-br from-[#fce7f3] to-[#fecaca] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+                <div class="aspect-square bg-gradient-to-br from-[#f0fdf4] to-[#dbeafe] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+            </div>
         </div>
     </section>
 
     <!-- What You'll Learn -->
-    <section id="course" class="what-learn">
-        <div class="what-learn-container">
-            <h2>Что даст курс</h2>
-            <div class="learn-grid">
-                <div class="learn-card">
-                    <h3>Форма</h3>
-                    <p>Понимание объёма и пропорций в рисунке</p>
-                </div>
-                <div class="learn-card">
-                    <h3>Свет и тень</h3>
-                    <p>Работа со светотенью для объёма и глубины</p>
-                </div>
-                <div class="learn-card">
-                    <h3>Цвет</h3>
-                    <p>Теория цвета и гармоничные палитры</p>
-                </div>
-                <div class="learn-card">
-                    <h3>Перспектива</h3>
-                    <p>Линейная и воздушная перспектива в композиции</p>
-                </div>
-                <div class="learn-card">
-                    <h3>Композиция</h3>
-                    <p>Построение выразительной и уравновешенной композиции</p>
-                </div>
-                <div class="learn-card">
-                    <h3>Фигура человека</h3>
-                    <p>Анатомия, пропорции и динамика движения</p>
-                </div>
+    <section id="course" class="py-32 px-10 max-w-7xl mx-auto">
+        <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Что даст курс</h2>
+        <div class="grid grid-cols-3 gap-16">
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Форма</h3>
+                <p class="text-base text-[#666] leading-relaxed">Понимание объёма и пропорций в рисунке</p>
+            </div>
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Свет и тень</h3>
+                <p class="text-base text-[#666] leading-relaxed">Работа со светотенью для объёма и глубины</p>
+            </div>
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Цвет</h3>
+                <p class="text-base text-[#666] leading-relaxed">Теория цвета и гармоничные палитры</p>
+            </div>
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Перспектива</h3>
+                <p class="text-base text-[#666] leading-relaxed">Линейная и воздушная перспектива в композиции</p>
+            </div>
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Композиция</h3>
+                <p class="text-base text-[#666] leading-relaxed">Построение выразительной и уравновешенной композиции</p>
+            </div>
+            <div class="py-8">
+                <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Фигура человека</h3>
+                <p class="text-base text-[#666] leading-relaxed">Анатомия, пропорции и динамика движения</p>
             </div>
         </div>
     </section>
 
     <!-- Program Section -->
-    <section id="program" class="program">
-        <div class="program-container">
-            <div class="program-header">
-                <h2>30 уроков</h2>
-                <p>Последовательное обучение от простого к сложному</p>
+    <section id="program" class="py-32 px-10 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-20">
+                <h2 class="text-5xl font-black mb-4 text-[#1a1a1a]">30 уроков</h2>
+                <p class="text-lg text-[#666]">Последовательное обучение от простого к сложному</p>
             </div>
-            <div class="program-content">
-                <div class="program-text">
-                    <h3>Структурированный путь</h3>
-                    <p>Каждый урок строится на знаниях предыдущих. Начинаем с интерфейса Procreate и базовых навыков, постепенно переходим к сложным техникам.</p>
-                    <ul class="program-list">
-                        <li>Уроки 1-5: Основы Procreate и рисования</li>
-                        <li>Уроки 6-12: Форма, свет и перспектива</li>
-                        <li>Уроки 13-20: Цвет и композиция</li>
-                        <li>Уроки 21-30: Практика и профессиональные техники</li>
+            <div class="grid grid-cols-2 gap-20 items-center">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6 text-[#1a1a1a]">Структурированный путь</h3>
+                    <p class="text-base text-[#666] leading-relaxed mb-8">Каждый урок строится на знаниях предыдущих. Начинаем с интерфейса Procreate и базовых навыков, постепенно переходим к сложным техникам.</p>
+                    <ul class="space-y-4">
+                        <li class="text-base text-[#1a1a1a] pl-8 relative">
+                            <span class="absolute left-0 text-[#999]">→</span>
+                            Уроки 1-5: Основы Procreate и рисования
+                        </li>
+                        <li class="text-base text-[#1a1a1a] pl-8 relative">
+                            <span class="absolute left-0 text-[#999]">→</span>
+                            Уроки 6-12: Форма, свет и перспектива
+                        </li>
+                        <li class="text-base text-[#1a1a1a] pl-8 relative">
+                            <span class="absolute left-0 text-[#999]">→</span>
+                            Уроки 13-20: Цвет и композиция
+                        </li>
+                        <li class="text-base text-[#1a1a1a] pl-8 relative">
+                            <span class="absolute left-0 text-[#999]">→</span>
+                            Уроки 21-30: Практика и профессиональные техники
+                        </li>
                     </ul>
                 </div>
-                <div class="program-visual">
-                    <div class="progress-bar">
-                        <div class="progress-fill"></div>
+                <div>
+                    <div class="h-1 bg-[#e8e8e8] rounded-full overflow-hidden mb-6">
+                        <div class="h-full bg-[#1a1a1a] w-full animate-grow-width"></div>
                     </div>
-                    <p class="progress-text">От новичка к уверенному художнику</p>
+                    <p class="text-sm text-[#999]">От новичка к уверенному художнику</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Inside Course -->
-    <section class="inside">
-        <div class="inside-container">
-            <h2>Что внутри</h2>
-            <div class="inside-grid">
-                <div class="inside-item">
-                    <div class="inside-icon">🎨</div>
-                    <h4>30 видеоуроков</h4>
-                    <p>Полные уроки в высоком качестве</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">🖌️</div>
-                    <h4>Кисти</h4>
-                    <p>Готовые кисти для вашей работы</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">📁</div>
-                    <h4>Исходники со слоями</h4>
-                    <p>Файлы проектов для изучения</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">🎭</div>
-                    <h4>20 текстур</h4>
-                    <p>Готовые текстуры для ваших работ</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">📸</div>
-                    <h4>45 референсов</h4>
-                    <p>Подобранные референсы для практики</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">💬</div>
-                    <h4>Чат учеников</h4>
-                    <p>Сообщество для обсуждения и помощи</p>
-                </div>
-                <div class="inside-item">
-                    <div class="inside-icon">♾️</div>
-                    <h4>Бессрочный доступ</h4>
-                    <p>Смотрите уроки когда угодно</p>
-                </div>
+    <section class="py-32 px-10 max-w-7xl mx-auto">
+        <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Что внутри</h2>
+        <div class="grid grid-cols-4 gap-12">
+            <div class="text-center">
+                <div class="text-4xl mb-6">🎨</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">30 видеоуроков</h4>
+                <p class="text-sm text-[#666]">Полные уроки в высоком качестве</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">🖌️</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">Кисти</h4>
+                <p class="text-sm text-[#666]">Готовые кисти для вашей работы</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">📁</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">Исходники со слоями</h4>
+                <p class="text-sm text-[#666]">Файлы проектов для изучения</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">🎭</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">20 текстур</h4>
+                <p class="text-sm text-[#666]">Готовые текстуры для ваших работ</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">📸</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">45 референсов</h4>
+                <p class="text-sm text-[#666]">Подобранные референсы для практики</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">💬</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">Чат учеников</h4>
+                <p class="text-sm text-[#666]">Сообщество для обсуждения и помощи</p>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl mb-6">♾️</div>
+                <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">Бессрочный доступ</h4>
+                <p class="text-sm text-[#666]">Смотрите уроки когда угодно</p>
             </div>
         </div>
     </section>
 
     <!-- Student Works -->
-    <section id="works" class="works">
-        <div class="works-container">
-            <h2>Работы учеников</h2>
-            <div class="works-gallery">
-                <div class="work-item work-item-1"></div>
-                <div class="work-item work-item-2"></div>
-                <div class="work-item work-item-3"></div>
-                <div class="work-item work-item-4"></div>
-                <div class="work-item work-item-5"></div>
-                <div class="work-item work-item-6"></div>
+    <section id="works" class="py-32 px-10 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Работы учеников</h2>
+            <div class="grid grid-cols-3 gap-6 auto-rows-[300px]">
+                <div class="bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer row-span-2"></div>
+                <div class="bg-gradient-to-br from-[#fce7f3] to-[#fecaca] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+                <div class="bg-gradient-to-br from-[#f0fdf4] to-[#dbeafe] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+                <div class="bg-gradient-to-br from-[#fef3c7] to-[#fde68a] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
+                <div class="bg-gradient-to-br from-[#ede9fe] to-[#f3e8ff] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer row-span-2"></div>
+                <div class="bg-gradient-to-br from-[#fecdd3] to-[#fbcfe8] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
             </div>
         </div>
     </section>
 
     <!-- About Author -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <div class="about-image">
-                <div class="avatar">ЕГ</div>
+    <section id="about" class="py-32 px-10 max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 gap-20 items-center">
+            <div class="flex justify-center">
+                <div class="w-80 h-80 rounded-full bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] flex items-center justify-center text-6xl font-black text-[#7c3aed] hover:scale-105 transition-transform duration-300">ЕГ</div>
             </div>
-            <div class="about-content">
-                <h2>Евгения Гагарина</h2>
-                <p class="about-title">Цифровой художник</p>
-                <p>Профессиональный художник с более чем 10-летним опытом в цифровой живописи. Специализируюсь на портретной живописи и концепт-арте. Работала с международными студиями и независимыми проектами.</p>
-                <p>Я создала этот курс, чтобы помочь начинающим художникам освоить Procreate и развить свои навыки цифрового рисования. Мой подход — это баланс между теорией и практикой, с акцентом на понимание основ.</p>
-                <div class="about-links">
-                    <a href="#" class="about-link">Instagram</a>
-                    <a href="#" class="about-link">Portfolio</a>
+            <div>
+                <p class="text-xs tracking-widest uppercase text-[#999] mb-3">Об авторе</p>
+                <h2 class="text-4xl font-bold mb-2 text-[#1a1a1a]">Евгения Гагарина</h2>
+                <p class="text-base text-[#666] mb-6">Цифровой художник</p>
+                <p class="text-base text-[#666] leading-relaxed mb-6">Профессиональный художник с более чем 10-летним опытом в цифровой живописи. Специализируюсь на портретной живописи и концепт-арте. Работала с международными студиями и независимыми проектами.</p>
+                <p class="text-base text-[#666] leading-relaxed mb-8">Я создала этот курс, чтобы помочь начинающим художникам освоить Procreate и развить свои навыки цифрового рисования. Мой подход — это баланс между теорией и практикой, с акцентом на понимание основ.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5">Instagram</a>
+                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5">Portfolio</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing -->
-    <section id="pricing" class="pricing">
-        <div class="pricing-container">
-            <h2>Полный курс</h2>
-            <div class="pricing-card">
-                <p class="original-price"><span>4 980 ₽</span></p>
-                <p class="discount-price">1 980 ₽</p>
-                <p class="price-note">Доступ навсегда</p>
-                <button class="btn btn-primary btn-large">Получить курс</button>
+    <section id="pricing" class="py-40 px-10 bg-white text-center">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-black mb-16 text-[#1a1a1a]">Полный курс</h2>
+            <div class="max-w-sm mx-auto bg-white border border-[#e8e8e8] rounded-3xl p-20">
+                <p class="text-lg text-[#999] line-through mb-3">4 980 ₽</p>
+                <p class="text-6xl font-black text-[#1a1a1a] mb-3">1 980 ₽</p>
+                <p class="text-sm text-[#666] mb-10">Доступ навс��гда</p>
+                <button class="w-full bg-[#1a1a1a] text-white px-8 py-5 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all mb-6">Получить курс</button>
+                <p class="text-xs text-[#999]">Один раз купили — учитесь всегда</p>
             </div>
         </div>
     </section>
 
     <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="final-cta-container">
-            <h2>Не нужно ждать,<br>пока вы «научитесь рисовать».<br>Начните рисовать сейчас.</h2>
-            <button class="btn btn-primary btn-large">Начать обучение</button>
+    <section class="py-40 px-10 bg-gradient-to-b from-[#fafaf9] to-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-6xl font-black leading-tight mb-12 text-[#1a1a1a]">Не нужно ждать,<br>пока вы «научитесь рисовать».<br>Начните рисовать сейчас.</h2>
+            <button class="bg-[#1a1a1a] text-white px-12 py-5 rounded-full font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all">Начать обучение</button>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <p>&copy; 2024 Procreate Basics. Евгения Гагарина</p>
-            <div class="footer-links">
-                <a href="#">Политика конфиденциальности</a>
-                <a href="#">Условия использования</a>
+    <footer class="bg-[#1a1a1a] text-white py-16 px-10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-8">
+            <p class="text-sm opacity-80">&copy; 2024 Procreate Basics. Евгения Гагарина</p>
+            <div class="flex gap-8">
+                <a href="#" class="text-sm text-white hover:opacity-70 transition-opacity">Политика конфиденциальности</a>
+                <a href="#" class="text-sm text-white hover:opacity-70 transition-opacity">Условия использования</a>
             </div>
         </div>
     </footer>
