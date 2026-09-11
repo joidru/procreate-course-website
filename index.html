@@ -4,8 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procreate Basics - Курс рисования от Евгении Гагариной</title>
-    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+        }
+        
+        .animate-grow-width {
+            animation: grow-width 2s ease-out;
+        }
+        
+        @keyframes grow-width {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+    </style>
 </head>
 <body class="bg-[#fafaf9] text-[#1a1a1a]">
     <!-- Navigation -->
@@ -24,14 +38,14 @@
 
     <!-- Hero Section -->
     <section class="py-32 px-10 max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 gap-24 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
             <div>
                 <div class="text-xs tracking-widest uppercase text-[#999] mb-8">PROCREATE / КУРС ЕВГЕНИИ ГАГАРИНОЙ</div>
-                <h1 class="text-7xl font-black leading-[1.15] mb-6 text-[#1a1a1a]">
+                <h1 class="text-6xl lg:text-7xl font-black leading-tight mb-6 text-[#1a1a1a]">
                     Рисуйте<br>уверенно.<br>Создавайте<br>своё.
                 </h1>
                 <p class="text-lg text-[#666] leading-relaxed mb-10 max-w-md">Полный курс рисования в Procreate для начинающих. От основ формы и перспективы до профессиональных техник.</p>
-                <div class="flex gap-5 items-center">
+                <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
                     <button class="bg-[#1a1a1a] text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all">Начать обучение</button>
                     <a href="#program" class="border-2 border-[#1a1a1a] text-[#1a1a1a] px-8 py-4 rounded-full font-semibold hover:bg-[#1a1a1a] hover:text-white transition-all">Посмотреть программу</a>
                 </div>
@@ -57,9 +71,9 @@
     <section class="py-40 px-10 bg-white">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-32">
-                <h2 class="text-5xl font-black text-[#1a1a1a]">Procreate — это инструмент.<br>Рисование — это навык.</h2>
+                <h2 class="text-4xl lg:text-5xl font-black text-[#1a1a1a] leading-tight">Procreate — это инструмент.<br>Рисование — это навык.</h2>
             </div>
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="aspect-square bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
                 <div class="aspect-square bg-gradient-to-br from-[#fce7f3] to-[#fecaca] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
                 <div class="aspect-square bg-gradient-to-br from-[#f0fdf4] to-[#dbeafe] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
@@ -70,7 +84,7 @@
     <!-- What You'll Learn -->
     <section id="course" class="py-32 px-10 max-w-7xl mx-auto">
         <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Что даст курс</h2>
-        <div class="grid grid-cols-3 gap-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
             <div class="py-8">
                 <h3 class="text-2xl font-bold mb-4 text-[#1a1a1a]">Форма</h3>
                 <p class="text-base text-[#666] leading-relaxed">Понимание объёма и пропорций в рисунке</p>
@@ -105,7 +119,7 @@
                 <h2 class="text-5xl font-black mb-4 text-[#1a1a1a]">30 уроков</h2>
                 <p class="text-lg text-[#666]">Последовательное обучение от простого к сложному</p>
             </div>
-            <div class="grid grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                 <div>
                     <h3 class="text-3xl font-bold mb-6 text-[#1a1a1a]">Структурированный путь</h3>
                     <p class="text-base text-[#666] leading-relaxed mb-8">Каждый урок строится на знаниях предыдущих. Начинаем с интерфейса Procreate и базовых навыков, постепенно переходим к сложным техникам.</p>
@@ -141,7 +155,7 @@
     <!-- Inside Course -->
     <section class="py-32 px-10 max-w-7xl mx-auto">
         <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Что внутри</h2>
-        <div class="grid grid-cols-4 gap-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             <div class="text-center">
                 <div class="text-4xl mb-6">🎨</div>
                 <h4 class="text-lg font-bold mb-3 text-[#1a1a1a]">30 видеоуроков</h4>
@@ -184,12 +198,12 @@
     <section id="works" class="py-32 px-10 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl font-black mb-20 text-[#1a1a1a]">Работы учеников</h2>
-            <div class="grid grid-cols-3 gap-6 auto-rows-[300px]">
-                <div class="bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer row-span-2"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
+                <div class="bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer md:row-span-2"></div>
                 <div class="bg-gradient-to-br from-[#fce7f3] to-[#fecaca] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
                 <div class="bg-gradient-to-br from-[#f0fdf4] to-[#dbeafe] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
                 <div class="bg-gradient-to-br from-[#fef3c7] to-[#fde68a] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
-                <div class="bg-gradient-to-br from-[#ede9fe] to-[#f3e8ff] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer row-span-2"></div>
+                <div class="bg-gradient-to-br from-[#ede9fe] to-[#f3e8ff] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer md:row-span-2"></div>
                 <div class="bg-gradient-to-br from-[#fecdd3] to-[#fbcfe8] rounded-3xl hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-lg cursor-pointer"></div>
             </div>
         </div>
@@ -197,7 +211,7 @@
 
     <!-- About Author -->
     <section id="about" class="py-32 px-10 max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 gap-20 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div class="flex justify-center">
                 <div class="w-80 h-80 rounded-full bg-gradient-to-br from-[#f3e8ff] to-[#fce7f3] flex items-center justify-center text-6xl font-black text-[#7c3aed] hover:scale-105 transition-transform duration-300">ЕГ</div>
             </div>
@@ -207,9 +221,9 @@
                 <p class="text-base text-[#666] mb-6">Цифровой художник</p>
                 <p class="text-base text-[#666] leading-relaxed mb-6">Профессиональный художник с более чем 10-летним опытом в цифровой живописи. Специализируюсь на портретной живописи и концепт-арте. Работала с международными студиями и независимыми проектами.</p>
                 <p class="text-base text-[#666] leading-relaxed mb-8">Я создала этот курс, чтобы помочь начинающим художникам освоить Procreate и развить свои навыки цифрового рисования. Мой подход — это баланс между теорией и практикой, с акцентом на понимание основ.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5">Instagram</a>
-                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5">Portfolio</a>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5 text-center">Instagram</a>
+                    <a href="#" class="px-7 py-3 bg-[#1a1a1a] text-white rounded-full text-sm font-semibold hover:bg-[#666] transition-all hover:-translate-y-0.5 text-center">Portfolio</a>
                 </div>
             </div>
         </div>
@@ -222,7 +236,7 @@
             <div class="max-w-sm mx-auto bg-white border border-[#e8e8e8] rounded-3xl p-20">
                 <p class="text-lg text-[#999] line-through mb-3">4 980 ₽</p>
                 <p class="text-6xl font-black text-[#1a1a1a] mb-3">1 980 ₽</p>
-                <p class="text-sm text-[#666] mb-10">Доступ навс��гда</p>
+                <p class="text-sm text-[#666] mb-10">Доступ навсегда</p>
                 <button class="w-full bg-[#1a1a1a] text-white px-8 py-5 rounded-full font-semibold hover:shadow-lg hover:-translate-y-1 transition-all mb-6">Получить курс</button>
                 <p class="text-xs text-[#999]">Один раз купили — учитесь всегда</p>
             </div>
@@ -232,16 +246,16 @@
     <!-- Final CTA -->
     <section class="py-40 px-10 bg-gradient-to-b from-[#fafaf9] to-white">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-6xl font-black leading-tight mb-12 text-[#1a1a1a]">Не нужно ждать,<br>пока вы «научитесь рисовать».<br>Начните рисовать сейчас.</h2>
+            <h2 class="text-5xl lg:text-6xl font-black leading-tight mb-12 text-[#1a1a1a]">Не нужно ждать,<br>пока вы «научитесь рисовать».<br>Начните рисовать сейчас.</h2>
             <button class="bg-[#1a1a1a] text-white px-12 py-5 rounded-full font-semibold text-lg hover:shadow-lg hover:-translate-y-1 transition-all">Начать обучение</button>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="bg-[#1a1a1a] text-white py-16 px-10">
-        <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center flex-wrap gap-8">
             <p class="text-sm opacity-80">&copy; 2024 Procreate Basics. Евгения Гагарина</p>
-            <div class="flex gap-8">
+            <div class="flex flex-col sm:flex-row gap-8">
                 <a href="#" class="text-sm text-white hover:opacity-70 transition-opacity">Политика конфиденциальности</a>
                 <a href="#" class="text-sm text-white hover:opacity-70 transition-opacity">Условия использования</a>
             </div>
