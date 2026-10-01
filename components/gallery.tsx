@@ -23,7 +23,7 @@ const works = [
 
 export function Gallery() {
   return (
-    <section id="works" className="bg-ink text-background">
+    <section id="works" className="bg-ink text-ink-foreground">
       <div className="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
@@ -32,7 +32,7 @@ export function Gallery() {
               Что вы научитесь рисовать
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-relaxed text-background/70">
+          <p className="max-w-sm text-sm leading-relaxed text-ink-foreground/70">
             Примеры работ, которые ученики создают в процессе обучения — от
             простых этюдов до законченных иллюстраций.
           </p>
@@ -49,7 +49,7 @@ export function Gallery() {
                 alt={work.alt}
                 className="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <figcaption className="px-3 py-3 text-xs text-background/70">
+              <figcaption className="px-3 py-3 text-xs text-ink-foreground/70">
                 {work.caption}
               </figcaption>
             </figure>
