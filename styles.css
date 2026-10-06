@@ -1993,7 +1993,19 @@ a.bg-primary,
   background: var(--cta-gradient);
   color: var(--primary-foreground);
   border-radius: 9999px;
-}
+  white-space: nowrap;
+  }
+
+#mobile-nav a[href="#pricing"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 15px;
+  font-weight: 500;
+  }
 
 #top a.bg-primary {
   min-height: 54px;
