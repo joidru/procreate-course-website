@@ -1956,8 +1956,8 @@
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
-  --primary: #ee6b47;
-  --primary-foreground: var(--background);
+  --primary: #0076ff;
+  --primary-foreground: #ffffff;
   --secondary: var(--card);
   --secondary-foreground: var(--foreground);
   --muted: var(--card);
@@ -1972,6 +1972,25 @@
   --ink-foreground: var(--foreground);
   --font-inter: 'Inter', Arial, sans-serif;
   --font-space-grotesk: 'Space Grotesk', 'Inter', Arial, sans-serif;
+}
+
+#top {
+  background-image: linear-gradient(to bottom, transparent 65%, var(--background)), url('./public/course-header.jpg');
+  background-position: center top;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#top h1 .text-primary {
+  color: var(--foreground);
+}
+
+#works img {
+  aspect-ratio: 1;
+}
+
+.text-primary {
+  color: color-mix(in srgb, var(--primary) 75%, var(--primary-foreground));
 }
 
 @property --tw-rotate-x {
