@@ -1956,7 +1956,7 @@
   --card-foreground: var(--foreground);
   --popover: var(--card);
   --popover-foreground: var(--foreground);
-  --primary: #0076ff;
+  --primary: color(srgb 0.9373 0.301 0.5869);
   --primary-foreground: #ffffff;
   --secondary: var(--card);
   --secondary-foreground: var(--foreground);
@@ -2028,7 +2028,7 @@ a.bg-primary,
 }
 
 .text-primary {
-  color: color-mix(in srgb, var(--primary) 75%, var(--primary-foreground));
+  color: var(--primary);
 }
 
 @property --tw-rotate-x {
