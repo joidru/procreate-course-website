@@ -2791,9 +2791,9 @@ a.bg-primary,
 
 .home-filters button[aria-pressed="true"] {
   border-color: transparent;
-  background: var(--cta-gradient);
+  background: var(--cta-gradient) border-box;
   color: var(--primary-foreground);
-}
+  }
 
 .course-grid {
   display: grid;
