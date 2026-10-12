@@ -1,0 +1,18 @@
+/*
+Theme Name: Евгения Гагарина
+Theme URI: https://evgagarina.com/
+Author: Евгения Гагарина
+Description: Классическая тема онлайн-школы рисования в Procreate. Тёмный дизайн, поддержка WooCommerce (каталог, чекаут, личный кабинет) и пунктов LifterLMS в кабинете.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 7.4
+WC requires at least: 8.0
+WC tested up to: 10.2
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: evgagarina
+Tags: dark, e-commerce, education, blog, custom-menu, custom-logo, translation-ready
+*/
+
+/* Основные стили лежат в assets/css/main.css (дизайн-система макета) и assets/css/theme.css (WordPress, WooCommerce, LifterLMS). */
