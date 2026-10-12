@@ -29,6 +29,37 @@
 #customer_details .woocommerce-additional-fields:not(:has(input, select, textarea, button)),
 #customer_details .woocommerce-account-fields:not(:has(input, select, textarea, button)) { display: none; }
 
+.woocommerce-checkout-review-order-table .checkout-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 0 0 1.25rem;
+  list-style: none;
+}
+.woocommerce-checkout-review-order-table .checkout-item { display: flex; align-items: flex-start; gap: 1rem; }
+.woocommerce-checkout-review-order-table .checkout-item-body { flex: 1; min-width: 0; }
+.woocommerce-checkout-review-order-table .checkout-item > img { flex-shrink: 0; }
+.checkout-item-remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--muted-foreground);
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+}
+.checkout-item-remove:hover { color: var(--primary); border-color: var(--primary); }
+.checkout-item-remove:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+.woocommerce-checkout-review-order-table .checkout-coupon + .checkout-totals { padding-top: 1.25rem; }
+.woocommerce-checkout-review-order-table #coupon-status:empty { display: none; }
+
 #payment .wc_payment_methods {
   display: flex;
   flex-direction: column;

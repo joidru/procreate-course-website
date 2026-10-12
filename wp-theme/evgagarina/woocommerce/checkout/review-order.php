@@ -36,6 +36,9 @@ $evg_savings = evg_cart_sale_savings();
 						<span class="checkout-item-price"><?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
 					</p>
 				</div>
+				<a class="checkout-item-remove" href="<?php echo esc_url( wc_get_cart_remove_url( $cart_item_key, wc_get_checkout_url() ) ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Удалить «%s» из корзины', 'evgagarina' ), $_product->get_name() ) ); ?>">
+					<span aria-hidden="true">&times;</span>
+				</a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
