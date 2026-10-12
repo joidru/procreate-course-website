@@ -3,6 +3,14 @@
  * и LifterLMS, приведённая к дизайн-токенам из main.css.
  */
 
+#payment .wc_payment_methods {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  list-style: none;
+}
+#payment .wc_payment_methods > li { margin: 0; }
+
 /* basics.html uses the original utility classes rather than the generic product layout. */
 .course-landing .course-landing-price > strong {
   font-family: var(--font-space-grotesk);
