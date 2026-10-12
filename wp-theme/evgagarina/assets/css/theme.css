@@ -3,6 +3,57 @@
  * и LifterLMS, приведённая к дизайн-токенам из main.css.
  */
 
+/* basics.html uses the original utility classes rather than the generic product layout. */
+.course-landing .course-landing-price > strong {
+  font-family: var(--font-space-grotesk);
+  font-size: 2.25rem;
+  line-height: 1.12;
+  font-weight: 700;
+  color: var(--foreground);
+}
+.course-landing .course-landing-price--large > strong { font-size: 3rem; }
+.course-landing .course-landing-price > s {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+.course-landing .course-landing-price--large > s { font-size: 1.25rem; }
+.course-landing a > svg { display: inline-block; flex: none; }
+.course-landing [data-faq] > svg {
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--primary);
+  transform: rotate(0deg);
+  transition: transform 200ms;
+}
+.course-landing [data-faq][aria-expanded="true"] > svg { transform: rotate(45deg); }
+.course-landing [hidden] { display: none !important; }
+.course-landing section { scroll-margin-top: 5rem; }
+.course-landing .course-landing-purchase .cart { margin-top: 2rem; }
+.course-landing .course-landing-purchase select,
+.course-landing .course-landing-purchase input {
+  max-width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--card);
+  color: var(--foreground);
+  font: inherit;
+}
+.course-landing .course-landing-purchase .single_add_to_cart_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 1rem 1.75rem;
+  background: var(--cta-gradient);
+  color: var(--primary-foreground);
+  font: inherit;
+  cursor: pointer;
+}
+
 /* ---------- Страница курса WooCommerce ---------- */
 .product-page {
   width: min(100% - 2rem, 1200px);
