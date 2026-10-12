@@ -125,7 +125,7 @@ if (loginButtons.length && !document.body.classList.contains('logged-in') && 'HT
       <div class="auth-field">
         <div class="auth-field__row">
           <label for="auth-password">Пароль</label>
-          <a href="./account.html#lost-password" class="auth-modal__link">Забыли пароль?</a>
+          <button type="button" class="auth-modal__link" data-auth-view="lost">Забыли пароль?</button>
         </div>
         <div class="auth-field__password">
           <input id="auth-password" name="pwd" type="password" autocomplete="current-password" required aria-describedby="auth-error">
@@ -137,6 +137,28 @@ if (loginButtons.length && !document.body.classList.contains('logged-in') && 'HT
       <button type="submit" class="auth-modal__submit">Войти</button>
       <div class="auth-modal__divider"><span>или</span></div>
       <a href="./account.html" class="auth-modal__yandex"><span class="auth-modal__yandex-mark" aria-hidden="true">Я</span>Войти через Яндекс</a>
+    </form>
+    <form class="auth-modal__form" id="auth-lost-form" action="/wp-login.php?action=lostpassword" method="post" novalidate hidden>
+      <button type="button" class="auth-modal__close" aria-label="Закрыть" data-auth-close>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+      <div class="auth-modal__head">
+        <h2 id="auth-lost-title" class="auth-modal__title">Восстановление пароля</h2>
+        <p class="auth-modal__lead">Укажите email или логин — пришлём ссылку для создания нового пароля</p>
+      </div>
+      <div data-auth-lost-fields>
+        <div class="auth-field">
+          <label for="auth-lost-login">Email или логин</label>
+          <input id="auth-lost-login" name="user_login" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required aria-describedby="auth-lost-error">
+        </div>
+        <p class="auth-modal__error" id="auth-lost-error" role="alert" hidden></p>
+        <button type="submit" class="auth-modal__submit">Получить ссылку</button>
+      </div>
+      <p class="auth-modal__success" id="auth-lost-success" role="status" tabindex="-1" hidden></p>
+      <button type="button" class="auth-modal__back" data-auth-view="login">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+        Вернуться ко входу
+      </button>
     </form>`;
   document.body.append(dialog);
 
@@ -159,16 +181,62 @@ if (loginButtons.length && !document.body.classList.contains('logged-in') && 'HT
     passwordInput.removeAttribute('aria-invalid');
   };
 
+  const lostForm = dialog.querySelector('#auth-lost-form');
+  const lostInput = dialog.querySelector('#auth-lost-login');
+  const lostError = dialog.querySelector('#auth-lost-error');
+  const lostFields = dialog.querySelector('[data-auth-lost-fields]');
+  const lostSuccess = dialog.querySelector('#auth-lost-success');
+
+  const resetLost = () => {
+    lostError.hidden = true;
+    lostInput.removeAttribute('aria-invalid');
+    lostFields.hidden = false;
+    lostSuccess.hidden = true;
+  };
+  const showView = view => {
+    const lost = view === 'lost';
+    form.hidden = lost;
+    lostForm.hidden = !lost;
+    dialog.setAttribute('aria-labelledby', lost ? 'auth-lost-title' : 'auth-title');
+    if (lost) {
+      resetLost();
+      if (!lostInput.value) lostInput.value = loginInput.value.trim();
+      lostInput.focus();
+    } else {
+      resetError();
+      loginInput.focus();
+    }
+  };
+
   loginButtons.forEach(button => button.addEventListener('click', event => {
     event.preventDefault();
     opener = button;
-    resetError();
     dialog.showModal();
-    loginInput.focus();
+    showView('login');
   }));
   dialog.addEventListener('close', () => opener?.focus());
   dialog.addEventListener('click', event => {
-    if (event.target === dialog || event.target.closest('[data-auth-close]')) dialog.close();
+    if (event.target === dialog || event.target.closest('[data-auth-close]')) return dialog.close();
+    const viewSwitch = event.target.closest('[data-auth-view]');
+    if (viewSwitch) showView(viewSwitch.dataset.authView);
+  });
+  lostInput.addEventListener('input', () => {
+    lostError.hidden = true;
+    lostInput.removeAttribute('aria-invalid');
+  });
+  lostForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const value = lostInput.value.trim();
+    if (!value) {
+      lostError.textContent = 'Введите email или логин';
+      lostError.hidden = false;
+      lostInput.setAttribute('aria-invalid', 'true');
+      return lostInput.focus();
+    }
+    lostFields.hidden = true;
+    lostSuccess.textContent = `Если аккаунт «${value}» существует, мы отправили на его email ссылку для сброса пароля. Проверьте почту и папку «Спам».`;
+    lostSuccess.hidden = false;
+    lostSuccess.focus();
   });
   toggle.addEventListener('click', () => {
     const visible = passwordInput.type === 'password';
