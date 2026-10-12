@@ -231,38 +231,81 @@ add_filter(
 remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 remove_action( 'woocommerce_checkout_order_review', 'woocommerce_checkout_payment', 20 );
 
-/**
- * Для цифровых товаров оставляем имя, email и комментарий.
- */
 function evg_checkout_fields( $fields ) {
-	$cart = WC()->cart;
-	if ( $cart && ! $cart->needs_shipping() && apply_filters( 'evg_checkout_minimal_fields', true ) ) {
-		$keep = array( 'billing_first_name', 'billing_email' );
-		foreach ( array_keys( $fields['billing'] ) as $key ) {
-			if ( ! in_array( $key, $keep, true ) ) {
-				unset( $fields['billing'][ $key ] );
-			}
-		}
-	}
-
-	if ( isset( $fields['billing']['billing_first_name'] ) ) {
-		$fields['billing']['billing_first_name']['label']       = __( 'Имя', 'evgagarina' );
-		$fields['billing']['billing_first_name']['placeholder'] = __( 'Как к вам обращаться', 'evgagarina' );
-		$fields['billing']['billing_first_name']['class']       = array( 'form-row-wide' );
-	}
-	if ( isset( $fields['billing']['billing_email'] ) ) {
-		$fields['billing']['billing_email']['placeholder'] = 'you@example.com';
-		$fields['billing']['billing_email']['description'] = __( 'На этот адрес придёт доступ к материалам', 'evgagarina' );
-		$fields['billing']['billing_email']['priority']    = 20;
-	}
-	if ( isset( $fields['order']['order_comments'] ) ) {
-		$fields['order']['order_comments']['label']       = __( 'Комментарий', 'evgagarina' );
-		$fields['order']['order_comments']['placeholder'] = __( 'Например, вопрос по курсу', 'evgagarina' );
-		$fields['order']['order_comments']['custom_attributes'] = array( 'rows' => 3 );
-	}
+	$fields['billing'] = array(
+		'billing_full_name' => array(
+			'type' => 'text',
+			'label' => __( 'Имя и фамилия', 'evgagarina' ),
+			'placeholder' => __( 'Иван Иванов', 'evgagarina' ),
+			'required' => true,
+			'autocomplete' => 'name',
+			'class' => array( 'form-row-wide' ),
+			'priority' => 10,
+		),
+		'billing_email' => array(
+			'type' => 'email',
+			'label' => __( 'Email', 'evgagarina' ),
+			'placeholder' => 'you@example.com',
+			'description' => __( 'На этот адрес придёт доступ к материалам', 'evgagarina' ),
+			'required' => true,
+			'validate' => array( 'email' ),
+			'autocomplete' => 'email',
+			'class' => array( 'form-row-wide' ),
+			'priority' => 20,
+		),
+		'billing_messenger' => array(
+			'type' => 'text',
+			'label' => __( 'Мессенджер', 'evgagarina' ),
+			'placeholder' => __( 'Telegram @username или другой контакт', 'evgagarina' ),
+			'required' => false,
+			'class' => array( 'form-row-wide' ),
+			'custom_attributes' => array( 'maxlength' => 200 ),
+			'priority' => 30,
+		),
+	);
+	unset( $fields['order']['order_comments'] );
 	return $fields;
 }
-add_filter( 'woocommerce_checkout_fields', 'evg_checkout_fields', 20 );
+add_filter( 'woocommerce_checkout_fields', 'evg_checkout_fields', 100 );
+
+add_filter( 'woocommerce_checkout_get_value', static function ( $value, $key ) {
+	if ( null === $value && 'billing_full_name' === $key && WC()->customer ) {
+		return trim( WC()->customer->get_billing_first_name() . ' ' . WC()->customer->get_billing_last_name() );
+	}
+	return $value;
+}, 10, 2 );
+
+// Keep native name properties populated for gateways, emails and customer profiles.
+add_filter( 'woocommerce_checkout_posted_data', static function ( $data ) {
+	$name = sanitize_text_field( $data['billing_full_name'] ?? '' );
+	$parts = preg_split( '/\s+/u', trim( $name ), 2 );
+	$data['billing_full_name'] = $name;
+	$data['billing_first_name'] = $parts[0] ?? '';
+	$data['billing_last_name'] = $parts[1] ?? '';
+	$data['billing_messenger'] = sanitize_text_field( $data['billing_messenger'] ?? '' );
+	return $data;
+} );
+
+add_action( 'woocommerce_after_checkout_validation', static function ( $data, $errors ) {
+	if ( '' === trim( $data['billing_full_name'] ?? '' ) ) {
+		$errors->add( 'evg_name_required', __( 'Укажите имя и фамилию.', 'evgagarina' ) );
+	}
+	if ( strlen( $data['billing_messenger'] ?? '' ) > 800 ) {
+		$errors->add( 'evg_messenger_length', __( 'Сократите контакт мессенджера до 200 символов.', 'evgagarina' ) );
+	}
+}, 10, 2 );
+
+add_action( 'woocommerce_checkout_create_order', static function ( $order, $data ) {
+	$order->update_meta_data( '_billing_full_name', sanitize_text_field( $data['billing_full_name'] ?? '' ) );
+	$order->update_meta_data( '_billing_messenger', sanitize_text_field( $data['billing_messenger'] ?? '' ) );
+}, 10, 2 );
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', static function ( $order ) {
+	$messenger = $order->get_meta( '_billing_messenger' );
+	if ( $messenger ) {
+		echo '<p><strong>' . esc_html__( 'Мессенджер', 'evgagarina' ) . ':</strong> ' . esc_html( $messenger ) . '</p>';
+	}
+} );
 
 /**
  * Оформление полей под макет: класс .checkout-field, подпись «необязательно».
