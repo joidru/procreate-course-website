@@ -268,6 +268,16 @@ function evg_checkout_fields( $fields ) {
 }
 add_filter( 'woocommerce_checkout_fields', 'evg_checkout_fields', 100 );
 
+// Core checkout.js animates .description with slideUp/slideDown on focus.
+// Give the persistent email hint its own class while preserving aria-describedby.
+add_filter( 'woocommerce_form_field', static function ( $html, $key ) {
+	if ( 'billing_email' === $key ) {
+		$html = str_replace( 'class="description"', 'class="evg-email-hint"', $html );
+		$html = str_replace( 'aria-hidden="true"', 'aria-hidden="false"', $html );
+	}
+	return $html;
+}, 10, 2 );
+
 add_filter( 'woocommerce_checkout_get_value', static function ( $value, $key ) {
 	if ( null === $value && 'billing_full_name' === $key && WC()->customer ) {
 		return trim( WC()->customer->get_billing_first_name() . ' ' . WC()->customer->get_billing_last_name() );

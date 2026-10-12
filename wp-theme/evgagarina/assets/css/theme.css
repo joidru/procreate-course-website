@@ -7,25 +7,27 @@
 .checkout-panel .woocommerce-billing-fields__field-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 .checkout-panel .woocommerce-billing-fields__field-wrapper > .form-row {
   width: 100%;
   margin: 0;
+  padding: 0;
 }
-/* WooCommerce toggles descriptions on focus; retain their layout space. */
-.checkout-panel #billing_email_field .description {
-  display: block !important;
-  visibility: hidden;
-  margin: 0.5rem 0 0;
+.checkout-panel #billing_email_field .evg-email-hint {
+  display: block;
+  margin: 0.375rem 0 0;
   padding: 0;
   font-size: 14px;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--muted-foreground);
 }
-.checkout-panel #billing_email_field:focus-within .description {
-  visibility: visible;
-}
+#customer_details.checkout-panel { gap: 1rem; padding: 1.5rem; }
+#customer_details .woocommerce-billing-fields { margin: 0; padding: 0; }
+/* Empty core wrappers otherwise create extra flex gaps below the last field. */
+#customer_details .woocommerce-shipping-fields:not(:has(input, select, textarea, button)),
+#customer_details .woocommerce-additional-fields:not(:has(input, select, textarea, button)),
+#customer_details .woocommerce-account-fields:not(:has(input, select, textarea, button)) { display: none; }
 
 #payment .wc_payment_methods {
   display: flex;
