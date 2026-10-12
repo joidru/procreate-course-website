@@ -60,6 +60,47 @@
 .woocommerce-checkout-review-order-table .checkout-coupon + .checkout-totals { padding-top: 1.25rem; }
 .woocommerce-checkout-review-order-table #coupon-status:empty { display: none; }
 
+.evg-notices-ready :is(.woocommerce-message, .woocommerce-error, .woocommerce-info, .woocommerce-NoticeGroup, .woocommerce-notices-wrapper, #coupon-status) { display: none !important; }
+/* Keep field errors available to aria-describedby without changing the form layout. */
+.evg-notices-ready .woocommerce-error-message {
+  position: absolute !important;
+  width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+.evg-notices {
+  position: fixed;
+  top: calc(1rem + var(--wp-admin--admin-bar--height, 0px));
+  right: 1rem;
+  z-index: 100000;
+  width: min(400px, calc(100vw - 2rem));
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+.evg-toast {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--background) 65%, transparent);
+  pointer-events: auto;
+}
+.evg-toast[data-kind="error"] { border-color: var(--primary); }
+.evg-toast-content { flex: 1; min-width: 0; margin: 0; padding: 0; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; list-style: none; }
+.evg-toast-content li + li { margin-top: 0.5rem; }
+.evg-toast-content a { color: var(--primary); text-decoration: underline; }
+.evg-toast-close { flex: 0 0 28px; width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--border); border-radius: 50%; background: var(--background); color: var(--muted-foreground); font-size: 22px; line-height: 1; cursor: pointer; }
+.evg-toast-close:hover { color: var(--primary); border-color: var(--primary); }
+.evg-toast-close:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
 #payment .wc_payment_methods {
   display: flex;
   flex-direction: column;

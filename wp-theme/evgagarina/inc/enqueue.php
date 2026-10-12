@@ -28,6 +28,8 @@ function evg_enqueue_assets() {
 		)
 	);
 
+	wp_enqueue_script( 'evg-notices', EVG_URI . '/assets/js/notices.js', array( 'evg-theme' ), evg_asset_version( '/assets/js/notices.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+
 	$data = array(
 		'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
 		'loggedIn'   => is_user_logged_in(),
