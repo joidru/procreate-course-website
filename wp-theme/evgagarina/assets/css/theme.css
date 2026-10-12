@@ -3,6 +3,30 @@
  * и LifterLMS, приведённая к дизайн-токенам из main.css.
  */
 
+.checkout-panel .woocommerce-billing-fields > h3 { display: none; }
+.checkout-panel .woocommerce-billing-fields__field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.checkout-panel .woocommerce-billing-fields__field-wrapper > .form-row {
+  width: 100%;
+  margin: 0;
+}
+/* WooCommerce toggles descriptions on focus; retain their layout space. */
+.checkout-panel #billing_email_field .description {
+  display: block !important;
+  visibility: hidden;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.checkout-panel #billing_email_field:focus-within .description {
+  visibility: visible;
+}
+
 #payment .wc_payment_methods {
   display: flex;
   flex-direction: column;
