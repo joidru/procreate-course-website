@@ -98,6 +98,9 @@ if (checkoutForm) {
     location.href = `mailto:courses@evgagarina.com?subject=${encodeURIComponent(`Заказ: ${product.title}`)}&body=${encodeURIComponent(body)}`;
   });
 }
+const retryLink = document.getElementById('retry-link');
+const retryItem = new URLSearchParams(location.search).get('item');
+if (retryLink && retryItem) retryLink.href = `./checkout.html?item=${encodeURIComponent(retryItem)}`;
 const questions = document.querySelectorAll('[data-faq]');
 questions.forEach(button => button.addEventListener('click', () => {
   const open = button.getAttribute('aria-expanded') !== 'true';
