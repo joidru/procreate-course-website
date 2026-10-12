@@ -2225,21 +2225,36 @@ a.bg-primary,
 .course-price {
   display: flex;
   align-items: baseline;
-  gap: 0.625rem;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
   margin: auto 0 0;
   padding-top: 0.75rem;
-}
-
-.course-price strong {
+  }
+  
+  .course-price strong {
   font-family: var(--font-space-grotesk);
-  font-size: 1.375rem;
+  font-size: 1.125rem;
   font-weight: 700;
-}
-
-.course-price s {
-  font-size: 14px;
+  white-space: nowrap;
+  }
+  
+  .course-price s {
+  font-size: 0.8125rem;
   color: var(--muted-foreground);
-}
+  white-space: nowrap;
+  }
+  
+  .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+  }
 
 .text-primary {
   color: var(--primary);
