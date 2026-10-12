@@ -1989,6 +1989,7 @@
 }
 
 a.bg-primary,
+#mobile-nav a.mobile-cta,
 #mobile-nav a[href="#pricing"] {
   background: var(--cta-gradient);
   color: var(--primary-foreground);
@@ -1996,6 +1997,7 @@ a.bg-primary,
   white-space: nowrap;
   }
 
+#mobile-nav a.mobile-cta,
 #mobile-nav a[href="#pricing"] {
   display: flex;
   align-items: center;
@@ -2037,6 +2039,206 @@ a.bg-primary,
 
 #works img {
   aspect-ratio: 1;
+}
+
+.home-eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+}
+
+.home-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2.5rem;
+  margin: 2.5rem 0 0;
+}
+
+.home-facts div {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.25rem;
+}
+
+.home-facts dt {
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.home-facts dd {
+  margin: 0;
+  font-family: var(--font-space-grotesk);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--foreground);
+}
+
+.home-collage {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.home-collage img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border);
+}
+
+.home-collage img:nth-child(even) {
+  transform: translateY(1.5rem);
+}
+
+.home-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.home-filters button {
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  background: transparent;
+  color: var(--foreground);
+  font: 500 14px/1 var(--font-inter);
+  cursor: pointer;
+  transition: background-color .2s, border-color .2s;
+}
+
+.home-filters button:hover {
+  border-color: rgb(255 255 255 / 40%);
+}
+
+.home-filters button[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--cta-gradient);
+  color: var(--primary-foreground);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 560px) {
+  .course-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .course-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.course-grid li { display: flex; }
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--card);
+  color: var(--foreground);
+  text-decoration: none;
+  transition: border-color .2s;
+}
+
+.course-card:hover {
+  border-color: color-mix(in oklab, var(--primary) 50%, transparent);
+}
+
+.course-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.course-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  transition: transform .5s;
+}
+
+.course-card:hover .course-media img {
+  transform: scale(1.04);
+}
+
+.course-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 9999px;
+  background: var(--cta-gradient);
+  color: var(--primary-foreground);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.course-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.25rem;
+}
+
+.course-kind {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.course-title {
+  margin: 0;
+  font-family: var(--font-space-grotesk);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.course-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+
+.course-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin: auto 0 0;
+  padding-top: 0.75rem;
+}
+
+.course-price strong {
+  font-family: var(--font-space-grotesk);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+
+.course-price s {
+  font-size: 14px;
+  color: var(--muted-foreground);
 }
 
 .text-primary {

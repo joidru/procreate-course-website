@@ -22,6 +22,13 @@ document.addEventListener('keydown', event => {
 });
 const desktop = matchMedia('(min-width: 768px)');
 desktop.addEventListener('change', event => { if (event.matches) closeMenu(); });
+const filters = document.querySelectorAll('[data-filter]');
+const catalogItems = document.querySelectorAll('[data-kind]');
+filters.forEach(button => button.addEventListener('click', () => {
+  const kind = button.dataset.filter;
+  filters.forEach(other => other.setAttribute('aria-pressed', String(other === button)));
+  catalogItems.forEach(item => { item.hidden = kind !== 'all' && item.dataset.kind !== kind; });
+}));
 const questions = document.querySelectorAll('[data-faq]');
 questions.forEach(button => button.addEventListener('click', () => {
   const open = button.getAttribute('aria-expanded') !== 'true';
