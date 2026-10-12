@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark bg-background">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Оформление заказа — Евгения Гагарина</title>
+<meta name="description" content="Оформление заказа на курсы и кисти для Procreate от Евгении Гагариной.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#101010">
+<link rel="stylesheet" href="./styles.css">
+<script src="./script.js" defer></script>
+</head>
+<body class="antialiased font-sans">
+<div class="min-h-screen bg-background">
+<header class="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+<a href="./index.html" class="flex items-center gap-2 font-display text-base font-bold tracking-tight text-foreground"><img src="./public/evgeniya-logo.png" width="40" height="40" alt="" style="width:40px;height:40px;object-fit:contain;flex-shrink:0"><span>Евгения Гагарина</span></a>
+<nav class="hidden items-center gap-8 md:flex" aria-label="Основная навигация">
+<a href="./index.html#courses" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Об авторе</a>
+<a href="#contacts" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Контакты</a>
+</nav>
+<div class="flex items-center gap-1 md:gap-2">
+<button aria-controls="mobile-nav" id="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" class="flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+</button>
+</div>
+</div>
+<nav aria-label="Мобильная навигация" hidden id="mobile-nav" class="mobile-nav">
+<a href="./index.html#courses" class="text-sm text-muted-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground">Об авторе</a>
+<a href="#contacts" class="text-sm text-muted-foreground">Контакты</a>
+</nav>
+</header>
+
+<main class="checkout">
+<div class="checkout-wrap">
+<a href="./index.html#courses" class="checkout-back">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+Вернуться к каталогу
+</a>
+
+<h1 class="checkout-title">Оформление заказа</h1>
+
+<div class="checkout-grid">
+<form id="checkout-form" class="checkout-form" novalidate>
+<section class="checkout-panel" aria-labelledby="contact-heading">
+<h2 id="contact-heading" class="checkout-heading">Контактные данные</h2>
+<div class="checkout-field">
+<label for="name">Имя <span class="checkout-required" aria-hidden="true">*</span></label>
+<input id="name" name="name" type="text" autocomplete="given-name" required placeholder="Как к вам обращаться" aria-describedby="name-error">
+<p id="name-error" class="checkout-error" hidden>Укажите имя</p>
+</div>
+<div class="checkout-field">
+<label for="email">Email <span class="checkout-required" aria-hidden="true">*</span></label>
+<input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@example.com" aria-describedby="email-hint email-error">
+<p id="email-hint" class="checkout-hint">На этот адрес придёт доступ к материалам</p>
+<p id="email-error" class="checkout-error" hidden>Укажите корректный email</p>
+</div>
+<div class="checkout-field">
+<label for="comment">Комментарий <span class="checkout-optional">(необязательно)</span></label>
+<textarea id="comment" name="comment" rows="3" placeholder="Например, вопрос по курсу"></textarea>
+</div>
+</section>
+
+<section class="checkout-panel" aria-labelledby="payment-heading">
+<h2 id="payment-heading" class="checkout-heading">Способ оплаты</h2>
+<label class="checkout-method">
+<input type="radio" name="payment" value="cards" checked>
+<span class="checkout-method-body">
+<span class="checkout-method-title">Российские и зарубежные карты</span>
+<span class="checkout-method-text">Мир, Visa, Mastercard, СБП</span>
+</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></svg>
+</label>
+<div class="checkout-notice" role="note">
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+<p>Перед нажатием кнопки «Подтвердить заказ» обязательно убедитесь, что у вас <strong>выключен VPN</strong>, иначе банк может не пропустить платёж.</p>
+</div>
+</section>
+</form>
+
+<aside class="checkout-summary" aria-labelledby="summary-heading">
+<h2 id="summary-heading" class="checkout-heading">Ваш заказ</h2>
+<div class="checkout-item">
+<img id="order-cover" src="./public/cover-oilpastel.jpg" alt="" width="72" height="72">
+<div class="checkout-item-body">
+<p id="order-kind" class="checkout-item-kind">Набор кистей</p>
+<p id="order-title" class="checkout-item-title">Кисти масляной пастели</p>
+<p class="checkout-item-qty">× 1</p>
+</div>
+</div>
+
+<div class="checkout-coupon">
+<button type="button" id="coupon-toggle" aria-expanded="false" aria-controls="coupon-panel">Есть купон? <span>Ввести код</span></button>
+<div id="coupon-panel" hidden>
+<label for="coupon" class="sr-only">Код купона</label>
+<input id="coupon" name="coupon" form="checkout-form" type="text" autocomplete="off" placeholder="Код купона">
+<button type="button" id="coupon-apply">Применить</button>
+</div>
+<p id="coupon-status" class="checkout-hint" aria-live="polite"></p>
+</div>
+
+<dl class="checkout-totals">
+<div><dt>Стоимость</dt><dd id="order-old">1480 ₽</dd></div>
+<div><dt>Скидка</dt><dd id="order-discount" class="checkout-discount">−781 ₽</dd></div>
+<div class="checkout-total"><dt>Итого</dt><dd id="order-price">699 ₽</dd></div>
+</dl>
+
+<button type="submit" form="checkout-form" class="checkout-submit">Подтвердить заказ</button>
+<p class="checkout-legal">Нажимая кнопку, вы принимаете условия <a href="#">договора оферты</a> и <a href="#">политики конфиденциальности</a>.</p>
+</aside>
+</div>
+</div>
+</main>
+
+<footer id="contacts" class="border-t border-border bg-background">
+<div class="mx-auto max-w-6xl px-5 py-12 md:px-8">
+<div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+<div class="max-w-xs">
+<p class="font-display text-lg font-bold text-foreground">Евгения Гагарина</p>
+<p class="mt-2 text-sm leading-relaxed text-muted-foreground">Онлайн-курсы и кисти для рисования в Procreate на iPad.</p>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<p class="font-medium text-foreground">По вопросам покупки и оплаты</p>
+<a href="mailto:courses@evgagarina.com" class="text-muted-foreground transition-colors hover:text-foreground">courses@evgagarina.com</a>
+</div>
+</div>
+<div class="mt-10 flex flex-col gap-1 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+<p>© 2026 Гагарина Евгения Владимировна. ИНН 182300831797</p>
+<p>Все права защищены.</p>
+</div>
+</div>
+</footer>
+</div>
+</body>
+</html>
