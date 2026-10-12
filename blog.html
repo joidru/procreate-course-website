@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark bg-background">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Блог о рисовании в Procreate — Евгения Гагарина</title>
+<meta name="description" content="Статьи о рисовании в Procreate на iPad: режимы наложения слоёв, цветовые профили и другие полезные разборы от Евгении Гагариной.">
+<meta name="theme-color" content="#101010">
+<link rel="stylesheet" href="./styles.css">
+<script src="./script.js" defer></script>
+</head>
+<body class="antialiased font-sans">
+<div class="min-h-screen bg-background">
+<header class="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+<a href="./index.html" class="flex items-center gap-2 font-display text-base font-bold tracking-tight text-foreground"><img src="./public/evgeniya-logo.png" width="40" height="40" alt="" style="width:40px;height:40px;object-fit:contain;flex-shrink:0"><span>Евгения Гагарина</span></a>
+<nav class="hidden items-center gap-8 md:flex" aria-label="Основная навигация">
+<a href="./index.html#courses" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Об авторе</a>
+<a href="./blog.html" aria-current="page" class="text-sm text-foreground">Блог</a>
+<a href="#contacts" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Контакты</a>
+</nav>
+<div class="flex items-center gap-1 md:gap-2">
+<button aria-controls="mobile-nav" id="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" class="flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+</button>
+</div>
+</div>
+<nav aria-label="Мобильная навигация" hidden id="mobile-nav" class="mobile-nav">
+<a href="./index.html#courses" class="text-sm text-muted-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground">Об авторе</a>
+<a href="./blog.html" aria-current="page" class="text-sm text-foreground">Блог</a>
+<a href="#contacts" class="text-sm text-muted-foreground">Контакты</a>
+</nav>
+</header>
+
+<main class="blog-page">
+<div class="blog-wrap">
+<section class="blog-hero" aria-labelledby="blog-title">
+<p class="blog-eyebrow">Блог</p>
+<h1 id="blog-title" class="blog-title">Заметки о рисовании <span class="blog-title-accent">в Procreate</span></h1>
+<p class="blog-lead">Разборы инструментов и приёмов, которые пригодятся в каждой иллюстрации: от настройки холста до работы со светом и цветом.</p>
+</section>
+
+<section aria-label="Статьи" class="blog-list">
+<article class="blog-featured">
+<a href="./blog-blend-modes.html" class="blog-featured-media" tabindex="-1" aria-hidden="true">
+<img src="./public/blog/blend-cover.png" width="768" height="534" alt="">
+</a>
+<div class="blog-featured-body">
+<p class="blog-tags"><span>Procreate</span><span>Полезное</span></p>
+<h2 class="blog-featured-title"><a href="./blog-blend-modes.html">Режимы наложения слоёв в Procreate</a></h2>
+<p class="blog-excerpt">Как применять режимы наложения при рисовании: все 26 режимов, сгруппированные по эффектам, с примерами на иллюстрациях.</p>
+<p class="blog-meta">Евгения Гагарина · 15 минут чтения</p>
+<a href="./blog-blend-modes.html" class="blog-read">Читать статью<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
+</article>
+
+<div class="blog-grid">
+<article class="blog-card">
+<a href="./blog-color-profile.html" class="blog-card-media" tabindex="-1" aria-hidden="true">
+<img src="./public/blog/color-profile-cover.jpg" width="768" height="534" alt="" loading="lazy">
+</a>
+<div class="blog-card-body">
+<p class="blog-tags"><span>Procreate</span><span>Полезное</span></p>
+<h2 class="blog-card-title"><a href="./blog-color-profile.html">Цветовой профиль в Procreate. Какой выбрать?</a></h2>
+<p class="blog-excerpt">Разбираемся, какой профиль выбрать при создании холста: RGB или CMYK, и что делать, если цвета потускнели при переводе.</p>
+<p class="blog-meta">Евгения Гагарина · 3 минуты чтения</p>
+</div>
+</article>
+
+<aside class="blog-cta" aria-labelledby="blog-cta-title">
+<p class="blog-eyebrow">Учитесь системно</p>
+<h2 id="blog-cta-title" class="blog-cta-title">Статьи — это начало. Курсы — это практика.</h2>
+<p class="blog-excerpt">Уроки с обратной связью, кисти и исходники для рисования в Procreate. Доступ к материалам навсегда.</p>
+<a href="./index.html#courses" class="checkout-submit blog-cta-btn">Смотреть курсы</a>
+</aside>
+</div>
+</section>
+</div>
+</main>
+
+<footer id="contacts" class="border-t border-border bg-background">
+<div class="mx-auto max-w-6xl px-5 py-12 md:px-8">
+<div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+<div class="max-w-xs">
+<p class="font-display text-lg font-bold text-foreground">Евгения Гагарина</p>
+<p class="mt-2 text-sm leading-relaxed text-muted-foreground">Онлайн-курсы и кисти для рисования в Procreate на iPad.</p>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<p class="font-medium text-foreground">По вопросам покупки и оплаты</p>
+<a href="mailto:courses@evgagarina.com" class="text-muted-foreground transition-colors hover:text-foreground">courses@evgagarina.com</a>
+</div>
+</div>
+<div class="mt-10 flex flex-col gap-1 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+<p>© 2026 Гагарина Евгения Владимировна. ИНН 182300831797</p>
+<p>Все права защищены.</p>
+</div>
+</div>
+</footer>
+</div>
+</body>
+</html>

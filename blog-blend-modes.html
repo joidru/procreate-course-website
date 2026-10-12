@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru" class="dark bg-background">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Режимы наложения слоёв в Procreate — Евгения Гагарина</title>
+<meta name="description" content="Все режимы наложения слоёв в Procreate с примерами: затемняющие, осветляющие, контрастные, инвертирующие и цветовые.">
+<meta name="theme-color" content="#101010">
+<link rel="stylesheet" href="./styles.css">
+<script src="./script.js" defer></script>
+</head>
+<body class="antialiased font-sans">
+<div class="min-h-screen bg-background">
+<header class="sticky top-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+<div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+<a href="./index.html" class="flex items-center gap-2 font-display text-base font-bold tracking-tight text-foreground"><img src="./public/evgeniya-logo.png" width="40" height="40" alt="" style="width:40px;height:40px;object-fit:contain;flex-shrink:0"><span>Евгения Гагарина</span></a>
+<nav class="hidden items-center gap-8 md:flex" aria-label="Основная навигация">
+<a href="./index.html#courses" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Об авторе</a>
+<a href="./blog.html" class="text-sm text-foreground">Блог</a>
+<a href="#contacts" class="text-sm text-muted-foreground transition-colors hover:text-foreground">Контакты</a>
+</nav>
+<div class="flex items-center gap-1 md:gap-2">
+<button aria-controls="mobile-nav" id="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" class="flex h-11 w-11 items-center justify-center rounded-full text-foreground md:hidden">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+</button>
+</div>
+</div>
+<nav aria-label="Мобильная навигация" hidden id="mobile-nav" class="mobile-nav">
+<a href="./index.html#courses" class="text-sm text-muted-foreground">Курсы</a>
+<a href="./index.html#author" class="text-sm text-muted-foreground">Об авторе</a>
+<a href="./blog.html" class="text-sm text-foreground">Блог</a>
+<a href="#contacts" class="text-sm text-muted-foreground">Контакты</a>
+</nav>
+</header>
+
+<main class="blog-page">
+<article class="article-wrap">
+<a href="./blog.html" class="checkout-back"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>Все статьи</a>
+
+<header class="article-header">
+<p class="blog-tags"><span>Procreate</span><span>Полезное</span></p>
+<h1 class="article-title">Режимы наложения слоёв в Procreate</h1>
+<p class="blog-meta">Евгения Гагарина · 15 минут чтения</p>
+</header>
+
+<img class="article-cover" src="./public/blog/blend-cover.png" width="768" height="534" alt="Иллюстрация с горным пейзажем и открытой панелью режимов наложения слоёв в Procreate">
+
+<div class="prose">
+<p class="prose-lead">В начале работы с Procreate не совсем понятно, зачем нужны режимы наложения слоёв и как их использовать. В этой статье я подробно расскажу о них и покажу на примерах. Режимы помогают создавать сложные световые эффекты, тени и текстуры без лишней прорисовки.</p>
+
+<nav class="article-toc" aria-label="Содержание статьи">
+<p class="article-toc-title">Содержание</p>
+<ol>
+<li><a href="#start">С чего начать</a></li>
+<li><a href="#darken">Затемняющие режимы</a></li>
+<li><a href="#lighten">Осветляющие режимы</a></li>
+<li><a href="#contrast">Контрастные режимы</a></li>
+<li><a href="#invert">Инвертирующие режимы</a></li>
+<li><a href="#color">Цветовые режимы</a></li>
+</ol>
+</nav>
+
+<h2 id="start">С чего начать и где они находятся</h2>
+<p>Вы создали холст и начали рисовать иллюстрацию. Режимы наложения находятся в слоях: нажмите на букву <strong>N</strong> у выбранного слоя. Там есть ползунок непрозрачности, а ниже — 26 режимов. Я разделю их по эффектам и покажу на примерах, как их применять.</p>
+<p>По умолчанию стоит <strong>Обычный</strong> режим, в котором мы всегда рисуем. Краска просто ложится на нижний слой без эффектов и, в зависимости от укрывистости кисти, полностью перекрывает нижнюю краску или немного её просвечивает.</p>
+
+<h2 id="darken">Затемняющие режимы</h2>
+<p>Работают по принципу замены светлых пикселей тёмными. Полезны для усиления теней и глубины.</p>
+
+<h3>Умножение</h3>
+<p>Затемняет цвета, но при этом их «просвечивает», как цветное стекло поверх рисунка. Отлично подходит для текстур: положите текстуру холста над всеми слоями, поставьте «Умножение», и появится эффект рисунка по холсту. Помните, что режим затемняющий, поэтому цвета иллюстрации станут глубже.</p>
+<figure><img src="./public/blog/blend-multiply.png" width="768" height="534" alt="Пример режима Умножение" loading="lazy"><figcaption>Умножение</figcaption></figure>
+
+<h3>Замена тёмным</h3>
+<p>Сравнивает цвета верхнего и нижнего слоя и смешивает их, оставляя тёмные и убирая светлые. Подходит для мягкого затемнения и теней, но меняет насыщенность — это регулируется ползунком непрозрачности.</p>
+<figure><img src="./public/blog/blend-darken.png" width="768" height="534" alt="Пример режима Замена тёмным" loading="lazy"><figcaption>Замена тёмным</figcaption></figure>
+
+<h3>Темнее</h3>
+<p>Берёт более тёмный цвет из двух слоёв, не смешивая их. Если цвета одинаковые, изменений не будет. Помогает сохранить контуры объектов и выбирать тёмные цвета без полупрозрачности.</p>
+<figure><img src="./public/blog/blend-darker_color.png" width="768" height="534" alt="Пример режима Темнее" loading="lazy"><figcaption>Темнее</figcaption></figure>
+
+<h3>Затемнение основы</h3>
+<p>Затемняет нижний слой и усиливает контраст, делая цвета насыщеннее и добавляя цветной оттенок. Подходит для глубоких цветных теней, винтажного эффекта и затемнения с сохранением насыщенности.</p>
+<figure><img src="./public/blog/blend-color_burn.png" width="768" height="534" alt="Пример режима Затемнение основы" loading="lazy"><figcaption>Затемнение основы</figcaption></figure>
+
+<h3>Линейный затемнитель</h3>
+<p>Затемняет сильнее, чем «Затемнение основы», но результат более плавный. Хорош для мягких реалистичных теней. Например, синий поверх жёлтого даст приглушённый зелёный без резкого контраста.</p>
+<figure><img src="./public/blog/blend-linear_burn.png" width="768" height="534" alt="Пример режима Линейный затемнитель" loading="lazy"><figcaption>Линейный затемнитель</figcaption></figure>
+
+<h2 id="lighten">Осветляющие режимы</h2>
+<p>Заменяют тёмные пиксели светлыми и делают изображение ярче. Используются для бликов, световых эффектов и осветления деталей.</p>
+<figure><img src="./public/blog/blend-normal.png" width="768" height="534" alt="Исходная иллюстрация в обычном режиме" loading="lazy"><figcaption>Исходная иллюстрация, обычный режим</figcaption></figure>
+
+<h3>Замена светлым</h3>
+<p>Оставляет только самые светлые пиксели из двух слоёв. Хорошо показывает лёгкие блики, свечение и отражения.</p>
+<figure><img src="./public/blog/blend-lighten.png" width="768" height="534" alt="Пример режима Замена светлым" loading="lazy"><figcaption>Замена светлым</figcaption></figure>
+
+<h3>Экран (Осветление)</h3>
+<p>Осветляет и смешивает цвета, создавая мягкий эффект. Идеален для бликов и освещения, если рисовать тем же цветом, что и на нижнем слое.</p>
+<figure><img src="./public/blog/blend-screen-1.png" width="768" height="534" alt="Пример режима Экран" loading="lazy"><figcaption>Экран</figcaption></figure>
+
+<h3>Осветление основы</h3>
+<p>Осветляет нижний слой, делает цвета ярче и насыщеннее, усиливает контраст. Подходит для неона, лампочек, отражённого света и бликов на коже.</p>
+<figure><img src="./public/blog/blend-color_dodge.png" width="768" height="534" alt="Пример режима Осветление основы" loading="lazy"><figcaption>Осветление основы</figcaption></figure>
+
+<h3>Добавить</h3>
+<p>Даёт ещё более сильный результат: цвета становятся сверхъяркими, появляется интенсивное свечение. Подходит для огня, неона и бликов.</p>
+<figure><img src="./public/blog/blend-add.png" width="768" height="534" alt="Пример режима Добавить" loading="lazy"><figcaption>Добавить</figcaption></figure>
+
+<h3>Светлее</h3>
+<p>Берёт самые светлые пиксели из двух слоёв без смешивания, не давая свечения. Подходит для мягких переходов без яркой засветки.</p>
+<figure><img src="./public/blog/blend-lighten_color.png" width="768" height="534" alt="Пример режима Светлее" loading="lazy"><figcaption>Светлее</figcaption></figure>
+
+<div class="article-tip">
+<p class="article-tip-title">Эту иллюстрацию мы рисуем в курсе</p>
+<p>В практическом курсе по Procreate разбираем все функции программы в процессе рисования и создаём анимацию с помощью ассистента анимации.</p>
+</div>
+
+<h2 id="contrast">Контрастные режимы</h2>
+<p>Хорошо подходят для ярких эффектов и текстур.</p>
+<figure><img src="./public/blog/blend-normal_cherry.png" width="768" height="534" alt="Исходная иллюстрация с вишней в обычном режиме" loading="lazy"><figcaption>Исходная иллюстрация, обычный режим</figcaption></figure>
+
+<h3>Перекрытие</h3>
+<p>Комбинация «Умножения» и «Экрана»: светлые цвета осветляют, тёмные затемняют, средне-серый (#808080) ничего не меняет. Рисуйте белой кистью для высветления и чёрной для затемнения. Положите текстуру бумаги сверху в этом режиме, и иллюстрация будет выглядеть как на бумаге.</p>
+<figure><img src="./public/blog/blend-overlay.png" width="768" height="534" alt="Пример режима Перекрытие" loading="lazy"><figcaption>Перекрытие</figcaption></figure>
+
+<h3>Рассеянный свет</h3>
+<p>Работает как «Перекрытие», но мягче. Используется для тонкой коррекции света и теней и деликатных бликов, например в портретах.</p>
+<figure><img src="./public/blog/blend-soft_light.png" width="768" height="534" alt="Пример режима Рассеянный свет" loading="lazy"><figcaption>Рассеянный свет</figcaption></figure>
+
+<h3>Направленный свет</h3>
+<p>Агрессивнее и контрастнее: цвета светлее 50% серого работают как «Экран», темнее — как «Умножение». Даёт жёсткие блики и тени. Чтобы кожа на портрете сияла, нанесите белый на щёки и лоб и отрегулируйте непрозрачность.</p>
+<figure><img src="./public/blog/blend-hard_light.png" width="768" height="534" alt="Пример режима Направленный свет" loading="lazy"><figcaption>Направленный свет</figcaption></figure>
+
+<h3>Яркий свет</h3>
+<p>Резко усиливает контраст: осветляет светлое и затемняет тёмное, меняя насыщенность. Подходит для световых акцентов, сияния, неона и фантастической стилистики.</p>
+<figure><img src="./public/blog/blend-vivid_light.png" width="768" height="534" alt="Пример режима Яркий свет" loading="lazy"><figcaption>Яркий свет</figcaption></figure>
+
+<h3>Линейный свет</h3>
+<p>Осветляет или затемняет линейно, в зависимости от яркости цвета. Даёт контролируемую работу со светом и тенью, точный баланс освещения.</p>
+<figure><img src="./public/blog/blend-linear_light.png" width="768" height="534" alt="Пример режима Линейный свет" loading="lazy"><figcaption>Линейный свет</figcaption></figure>
+
+<h3>Точечный свет</h3>
+<p>Заменяет пиксели в зависимости от яркости, оставляя средние тона нетронутыми. Подходит для экспериментальных текстур, постеризации, коллажей и абстракций.</p>
+<figure><img src="./public/blog/blend-pin_light.png" width="768" height="534" alt="Пример режима Точечный свет" loading="lazy"><figcaption>Точечный свет</figcaption></figure>
+
+<h3>Жёсткое смешение</h3>
+<p>Оставляет только основные цвета RGB, CMY, белый и чёрный, с резкими переходами между ними. Подходит для поп-арта, комиксов и неона, а при низкой непрозрачности — для усиления цвета.</p>
+<figure><img src="./public/blog/blend-hard_mix.png" width="768" height="534" alt="Пример режима Жёсткое смешение" loading="lazy"><figcaption>Жёсткое смешение</figcaption></figure>
+
+<h2 id="invert">Инвертирующие режимы</h2>
+<p>Сравнивают цвета верхнего и нижнего слоя и создают эффект вычитания или инверсии.</p>
+<figure><img src="./public/blog/blend-normal_.png" width="768" height="534" alt="Исходная иллюстрация в обычном режиме" loading="lazy"><figcaption>Исходная иллюстрация, обычный режим</figcaption></figure>
+
+<h3>Разница</h3>
+<p>Вычитает цвета: чёрный ничего не меняет, белый полностью инвертирует, промежуточные дают неоновую смесь. Подходит для киберпанка, глитча и экспериментальной цветокоррекции.</p>
+<figure><img src="./public/blog/blend-difference.png" width="768" height="534" alt="Пример режима Разница" loading="lazy"><figcaption>Разница</figcaption></figure>
+
+<h3>Исключение</h3>
+<p>Похож на «Разницу», но мягче: средне-серый даёт сероватый эффект вместо резкого контраста. Подходит для бликов с необычными оттенками и переходов в градиентах.</p>
+<figure><img src="./public/blog/blend-exclusion.png" width="768" height="534" alt="Пример режима Исключение" loading="lazy"><figcaption>Исключение</figcaption></figure>
+
+<h3>Вычитание</h3>
+<p>Чем ярче цвет верхнего слоя, тем сильнее затемнение; белый превращает пиксели в чёрный. Подходит для драматичных теней и мрачных, готических эффектов.</p>
+<figure><img src="./public/blog/blend-subtract.png" width="768" height="534" alt="Пример режима Вычитание" loading="lazy"><figcaption>Вычитание</figcaption></figure>
+
+<h2 id="color">Цветовые режимы</h2>
+<p>Управляют оттенком, насыщенностью и яркостью изображения.</p>
+
+<h3>Тон</h3>
+<p>Берёт оттенок верхнего слоя, сохраняя яркость и насыщенность нижнего. Объём, тени и текстуры остаются — удобно перекрашивать одежду, волосы, глаза и фон.</p>
+<figure><img src="./public/blog/blend-hue.png" width="768" height="534" alt="Пример режима Тон" loading="lazy"><figcaption>Тон</figcaption></figure>
+
+<h3>Насыщенность</h3>
+<p>Берёт насыщенность верхнего слоя, сохраняя оттенок и яркость нижнего. Помогает сделать картинку живее или, наоборот, монохромной.</p>
+<figure><img src="./public/blog/blend-saturation.png" width="768" height="534" alt="Пример режима Насыщенность" loading="lazy"><figcaption>Насыщенность</figcaption></figure>
+
+<h3>Цвет</h3>
+<p>Заменяет оттенок и насыщенность нижнего слоя, сохраняя его яркость и светотеневой рисунок. Отлично подходит для смены палитры и точной коррекции мягкими кистями.</p>
+<figure><img src="./public/blog/blend-color.png" width="768" height="534" alt="Пример режима Цвет" loading="lazy"><figcaption>Цвет</figcaption></figure>
+
+<h3>Свечение</h3>
+<p>Заменяет яркость нижнего слоя, сохраняя оттенок и насыщенность. Подходит для перламутровых и светящихся эффектов, имитации золота и неона.</p>
+<figure><img src="./public/blog/blend-luminosity.png" width="768" height="534" alt="Пример режима Свечение" loading="lazy"><figcaption>Свечение</figcaption></figure>
+
+<p>Понимание режимов наложения расширяет творческие возможности при любом уровне опыта. Но теории мало — применяйте эти знания, когда рисуете, и возвращайтесь к статье, чтобы попрактиковаться.</p>
+</div>
+
+<aside class="article-cta" aria-labelledby="article-cta-title">
+<h2 id="article-cta-title" class="blog-cta-title">Закрепите режимы на практике</h2>
+<p class="blog-excerpt">Курсы по Procreate с уроками, кистями и обратной связью. Доступ к материалам навсегда.</p>
+<a href="./index.html#courses" class="checkout-submit blog-cta-btn">Смотреть курсы</a>
+</aside>
+
+<section class="article-related" aria-labelledby="related-title">
+<h2 id="related-title" class="checkout-heading">Похожие записи</h2>
+<a href="./blog-color-profile.html" class="related-card">
+<img src="./public/blog/color-profile-cover.jpg" width="768" height="534" alt="" loading="lazy">
+<span><span class="related-title">Цветовой профиль в Procreate. Какой выбрать?</span><span class="blog-meta">3 минуты чтения</span></span>
+</a>
+</section>
+</article>
+</main>
+
+<footer id="contacts" class="border-t border-border bg-background">
+<div class="mx-auto max-w-6xl px-5 py-12 md:px-8">
+<div class="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+<div class="max-w-xs">
+<p class="font-display text-lg font-bold text-foreground">Евгения Гагарина</p>
+<p class="mt-2 text-sm leading-relaxed text-muted-foreground">Онлайн-курсы и кисти для рисования в Procreate на iPad.</p>
+</div>
+<div class="flex flex-col gap-2 text-sm">
+<p class="font-medium text-foreground">По вопросам покупки и оплаты</p>
+<a href="mailto:courses@evgagarina.com" class="text-muted-foreground transition-colors hover:text-foreground">courses@evgagarina.com</a>
+</div>
+</div>
+<div class="mt-10 flex flex-col gap-1 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+<p>© 2026 Гагарина Евгения Владимировна. ИНН 182300831797</p>
+<p>Все права защищены.</p>
+</div>
+</div>
+</footer>
+</div>
+</body>
+</html>
