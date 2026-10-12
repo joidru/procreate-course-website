@@ -19,6 +19,16 @@ add_filter(
 	}
 );
 
+add_filter(
+	'woocommerce_update_order_review_fragments',
+	static function ( $fragments ) {
+		ob_start();
+		get_template_part( 'template-parts/checkout-shipping' );
+		$fragments['#evg-checkout-shipping'] = ob_get_clean();
+		return $fragments;
+	}
+);
+
 function evg_wc_enqueue() {
 	if ( is_checkout() && ! is_order_received_page() ) {
 		wp_enqueue_script(

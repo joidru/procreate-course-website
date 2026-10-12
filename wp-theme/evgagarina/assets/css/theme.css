@@ -205,6 +205,49 @@
   .product-actions > .result-btn-outline { width: 100%; }
 }
 
+#evg-checkout-shipping:has(> .checkout-delivery) { min-width: 0; }
+#evg-checkout-shipping:not(:has(> .checkout-delivery)) { display: none; }
+.checkout-delivery .checkout-shipping,
+.checkout-delivery .checkout-shipping tbody,
+.checkout-delivery .checkout-shipping tr,
+.checkout-delivery .checkout-shipping th,
+.checkout-delivery .checkout-shipping td { display: block; width: 100%; border: 0; padding: 0; text-align: left; }
+.checkout-delivery .checkout-shipping th { font-size: 14px; color: var(--muted-foreground); margin-bottom: 0.75rem; }
+.checkout-delivery .checkout-shipping tr + tr { margin-top: 1.5rem; }
+.checkout-delivery .woocommerce-shipping-methods { display: flex; flex-direction: column; gap: 0.75rem; list-style: none; margin: 0; padding: 0; }
+.checkout-delivery .woocommerce-shipping-methods > li {
+  padding: 1rem 1.125rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  color: var(--foreground);
+  overflow-wrap: anywhere;
+  line-height: 1.5;
+}
+.checkout-delivery .woocommerce-shipping-methods > li:has(input:checked),
+.checkout-delivery .woocommerce-shipping-methods > li:has(input[type="hidden"]) {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+}
+.checkout-delivery input.shipping_method[type="radio"] { width: 18px; height: 18px; accent-color: var(--primary); vertical-align: middle; margin-right: 0.75rem; }
+.checkout-delivery .woocommerce-shipping-methods label { cursor: pointer; font-weight: 600; }
+.checkout-delivery .woocommerce-shipping-methods .amount { white-space: nowrap; }
+.checkout-delivery .woocommerce-shipping-methods button,
+.checkout-delivery .woocommerce-shipping-methods .button {
+  max-width: 100%;
+  white-space: normal;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--background);
+  color: var(--foreground);
+  font: inherit;
+  cursor: pointer;
+}
+.checkout-delivery input:focus-visible,
+.checkout-delivery button:focus-visible,
+.checkout-delivery a:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+
 /* ---------- WordPress ---------- */
 .screen-reader-text {
   position: absolute !important;

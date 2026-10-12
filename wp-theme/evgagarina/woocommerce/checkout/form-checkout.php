@@ -41,6 +41,8 @@ $order_button_text = apply_filters( 'woocommerce_order_button_text', __( 'Под
 				<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 			<?php endif; ?>
 
+			<?php get_template_part( 'template-parts/checkout-shipping' ); ?>
+
 			<?php if ( WC()->cart->needs_payment() ) : ?>
 				<section class="checkout-panel" aria-labelledby="payment-heading">
 					<h2 id="payment-heading" class="checkout-heading"><?php esc_html_e( 'Способ оплаты', 'evgagarina' ); ?></h2>

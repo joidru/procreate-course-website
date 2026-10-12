@@ -88,11 +88,4 @@ $evg_savings = evg_cart_sale_savings();
 		<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 	</dl>
 
-	<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
-		<table class="checkout-shipping">
-			<?php do_action( 'woocommerce_review_order_before_shipping' ); ?>
-			<?php wc_cart_totals_shipping_html(); ?>
-			<?php do_action( 'woocommerce_review_order_after_shipping' ); ?>
-		</table>
-	<?php endif; ?>
 </div>
