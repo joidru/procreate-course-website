@@ -3782,3 +3782,28 @@ html{color-scheme:dark;scroll-behavior:smooth}body{margin:0}section{scroll-margi
   .acc-nav a:hover:not([aria-current]) { background: var(--secondary, rgb(255 255 255 / 5%)); }
   .acc-nav-logout { margin-top: 0.5rem; border-top: 1px solid var(--border) !important; border-radius: 0 !important; }
 }
+
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 2.75rem;
+  min-width: 2.75rem;
+  padding: 0 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  color: var(--foreground);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.login-btn svg { flex-shrink: 0; }
+.login-btn:hover { background: var(--secondary); border-color: rgb(239 234 229 / 24%); }
+.login-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.login-btn__label { display: none; }
+@media (min-width: 768px) {
+  .login-btn { height: 2.5rem; padding: 0 1rem; }
+  .login-btn__label { display: inline; }
+}
