@@ -10,6 +10,19 @@
   list-style: none;
 }
 #payment .wc_payment_methods > li { margin: 0; }
+#payment .checkout-method {
+  border-color: var(--border);
+  background: var(--card);
+  color: var(--foreground);
+}
+#payment .checkout-method:has(input[name="payment_method"]:checked) {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--card));
+}
+#payment .checkout-method:has(input:focus-visible) {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
 
 /* basics.html uses the original utility classes rather than the generic product layout. */
 .course-landing .course-landing-price > strong {
