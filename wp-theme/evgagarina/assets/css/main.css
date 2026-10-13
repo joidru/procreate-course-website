@@ -89,6 +89,14 @@
   --font-inter: 'Inter', 'Inter Fallback';
 }
 
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url('../fonts/Montserrat-Variable.ttf') format('truetype');
+}
+
 .space_grotesk_e6988195-module__RNs2Mq__className {
   font-family: 'Montserrat', Arial, sans-serif;
   font-style: normal;
