@@ -127,4 +127,5 @@ add_action('admin_enqueue_scripts', function($hook) {
     if (!$screen || $screen->post_type !== 'product' || !in_array($hook, array('post.php','post-new.php'), true)) return;
     wp_enqueue_style('evg-course-program-admin', EVG_URI . '/assets/css/course-program-admin.css', array(), EVG_VERSION);
     wp_enqueue_script('evg-course-program-admin', EVG_URI . '/assets/js/course-program-admin.js', array(), EVG_VERSION, true);
+    wp_add_inline_script('evg-course-program-admin', 'window.evgProgramIcons = ' . wp_json_encode(evg_course_program_icons()) . ';', 'before');
 });
