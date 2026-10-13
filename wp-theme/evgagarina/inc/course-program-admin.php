@@ -81,7 +81,7 @@ function evg_course_program_metabox($post) {
         <div id="evg-program-items" class="evg-metabox-items">
         <?php foreach ($data['items'] as $item) { evg_course_program_item($item); } ?>
         </div>
-        <p><button type="button" class="button button-secondary" id="evg-program-add" class="evg-metabox-add">+ Добавить карточку</button></p>
+        <p><button type="button" class="button button-secondary evg-metabox-add" id="evg-program-add">+ Добавить карточку</button></p>
         <p class="description">Перетаскивайте карточки за заголовок для сортировки. Изменения сохраняются кнопкой «Обновить» товара.</p>
         <template id="evg-program-template" class="evg-metabox-template"><?php evg_course_program_item(array('icon'=>'boxes','title'=>'','description'=>'')); ?></template>
     </div>
