@@ -1,0 +1,36 @@
+/* Shared WooCommerce product metabox editor UI. */
+.evg-metabox-editor .evg-metabox-item {
+  border: 1px solid #c3c4c7;
+  border-radius: 8px;
+  margin: 12px 0;
+  background: #fff;
+}
+.evg-metabox-editor .evg-metabox-item-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  background: #f6f7f7;
+  cursor: grab;
+  flex-wrap: wrap;
+}
+.evg-metabox-editor .evg-metabox-item-label { flex: 1; }
+.evg-metabox-editor .evg-metabox-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.evg-metabox-editor .evg-metabox-item-fields { padding: 12px; }
+.evg-metabox-editor .evg-metabox-item-fields label { font-weight: 600; }
+.evg-metabox-editor .evg-metabox-item-fields input,
+.evg-metabox-editor .evg-metabox-item-fields textarea { margin-top: 6px; }
+.evg-metabox-editor .evg-metabox-item.is-dragging { opacity: .5; }
+.evg-metabox-editor > p > .widefat { margin-top: 6px; }
+/* Program-specific icon selector (no icon picker in the included-items editor). */
+.evg-metabox-editor .evg-program-icon-preview {
+  display: inline-flex;
+  vertical-align: middle;
+  color: #d63384;
+  margin-left: 12px;
+}
+.evg-metabox-editor .evg-program-icon-preview svg { width: 24px; height: 24px; }
