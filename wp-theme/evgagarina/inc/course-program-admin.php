@@ -73,28 +73,28 @@ function evg_course_program_metabox($post) {
     $data = evg_course_program_get($post->ID);
     wp_nonce_field('evg_save_course_program', 'evg_course_program_nonce');
     ?>
-    <div class="evg-program-editor">
+    <div class="evg-program-editor evg-metabox-editor">
         <p><label><input type="checkbox" name="evg_program_enabled" value="yes" <?php checked($data['enabled'], 'yes'); ?>> Показывать программу курса</label></p>
         <p><label for="evg-program-title"><strong>Заголовок</strong></label><input class="widefat" id="evg-program-title" name="evg_program_title" value="<?php echo esc_attr($data['title']); ?>"></p>
         <p><label for="evg-program-subtitle"><strong>Подзаголовок / описание</strong></label><textarea class="widefat" rows="3" id="evg-program-subtitle" name="evg_program_subtitle"><?php echo esc_textarea($data['subtitle']); ?></textarea></p>
         <h3>Карточки программы</h3>
-        <div id="evg-program-items">
+        <div id="evg-program-items" class="evg-metabox-items">
         <?php foreach ($data['items'] as $item) { evg_course_program_item($item); } ?>
         </div>
-        <p><button type="button" class="button button-secondary" id="evg-program-add">+ Добавить карточку</button></p>
+        <p><button type="button" class="button button-secondary" id="evg-program-add" class="evg-metabox-add">+ Добавить карточку</button></p>
         <p class="description">Перетаскивайте карточки за заголовок для сортировки. Изменения сохраняются кнопкой «Обновить» товара.</p>
-        <template id="evg-program-template"><?php evg_course_program_item(array('icon'=>'boxes','title'=>'','description'=>'')); ?></template>
+        <template id="evg-program-template" class="evg-metabox-template"><?php evg_course_program_item(array('icon'=>'boxes','title'=>'','description'=>'')); ?></template>
     </div>
     <?php
 }
 function evg_course_program_item($item) {
     $icons = evg_course_program_icons();
     ?>
-    <div class="evg-program-item" draggable="true">
-        <div class="evg-program-item-head"><span class="dashicons dashicons-move" aria-hidden="true"></span> <strong class="evg-program-item-label"><?php echo esc_html($item['title'] ?: 'Новая карточка'); ?></strong><span class="evg-program-actions"><button type="button" class="button-link evg-program-up">↑</button> <button type="button" class="button-link evg-program-down">↓</button> <button type="button" class="button-link evg-program-duplicate">Дублировать</button> <button type="button" class="button-link-delete evg-program-remove">Удалить</button></span></div>
-        <div class="evg-program-item-fields">
+    <div class="evg-program-item evg-metabox-item" data-empty-label="Новая карточка" draggable="true">
+        <div class="evg-program-item-head evg-metabox-item-head"><span class="dashicons dashicons-move" aria-hidden="true"></span> <strong class="evg-program-item-label evg-metabox-item-label"><?php echo esc_html($item['title'] ?: 'Новая карточка'); ?></strong><span class="evg-program-actions evg-metabox-actions"><button type="button" class="button-link evg-program-up evg-metabox-up">↑</button> <button type="button" class="button-link evg-program-down evg-metabox-down">↓</button> <button type="button" class="button-link evg-program-duplicate evg-metabox-duplicate">Дублировать</button> <button type="button" class="button-link-delete evg-program-remove evg-metabox-remove">Удалить</button></span></div>
+        <div class="evg-program-item-fields evg-metabox-item-fields">
             <p><label>Иконка <select class="evg-program-icon" name="evg_program_items[icon][]"><?php foreach ($icons as $key => $markup) : ?><option value="<?php echo esc_attr($key); ?>" <?php selected($item['icon'], $key); ?>><?php echo esc_html($key); ?></option><?php endforeach; ?></select></label> <span class="evg-program-icon-preview" aria-hidden="true"><?php echo $icons[isset($icons[$item['icon']]) ? $item['icon'] : 'boxes']; // Safe, predefined SVG only. ?></span></p>
-            <p><label>Заголовок<input class="widefat evg-program-item-title" name="evg_program_items[title][]" value="<?php echo esc_attr($item['title']); ?>"></label></p>
+            <p><label>Заголовок<input class="widefat evg-program-item-title evg-metabox-item-title" name="evg_program_items[title][]" value="<?php echo esc_attr($item['title']); ?>"></label></p>
             <p><label>Описание<textarea class="widefat" rows="3" name="evg_program_items[description][]"><?php echo esc_textarea($item['description']); ?></textarea></label></p>
         </div>
     </div>
@@ -125,7 +125,7 @@ add_action('save_post_product', function($post_id) {
 add_action('admin_enqueue_scripts', function($hook) {
     $screen = get_current_screen();
     if (!$screen || $screen->post_type !== 'product' || !in_array($hook, array('post.php','post-new.php'), true)) return;
-    wp_enqueue_style('evg-course-program-admin', EVG_URI . '/assets/css/course-program-admin.css', array(), EVG_VERSION);
-    wp_enqueue_script('evg-course-program-admin', EVG_URI . '/assets/js/course-program-admin.js', array(), EVG_VERSION, true);
-    wp_add_inline_script('evg-course-program-admin', 'window.evgProgramIcons = ' . wp_json_encode(evg_course_program_icons()) . ';', 'before');
+    wp_enqueue_style('evg-product-metaboxes', EVG_URI . '/assets/css/product-metaboxes.css', array(), EVG_VERSION);
+    wp_enqueue_script('evg-product-metaboxes', EVG_URI . '/assets/js/product-metaboxes.js', array(), EVG_VERSION, true);
+    wp_add_inline_script('evg-product-metaboxes', 'window.evgProgramIcons = ' . wp_json_encode(evg_course_program_icons()) . ';', 'before');
 });
