@@ -1508,153 +1508,381 @@
   }
 }
 
-
 /* LifterLMS lesson completion and adjacent lesson navigation. */
-.llms-lesson-button-wrapper { display: flex; justify-content: center; margin: 2rem 0 2.5rem; }
-.llms-lesson-button-wrapper .llms-complete-lesson-form { width: auto; max-width: 100%; margin: 0; }
-.llms-lesson-button-wrapper .llms-form-field { margin: 0; padding: 0; }
+.llms-lesson-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0 2.5rem;
+}
+.llms-lesson-button-wrapper .llms-complete-lesson-form {
+  width: auto;
+  max-width: 100%;
+  margin: 0;
+}
+.llms-lesson-button-wrapper .llms-form-field {
+  margin: 0;
+  padding: 0;
+}
 .llms-lesson-button-wrapper #llms_mark_complete {
-  display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: 100%;
-  min-height: 3.25rem; padding: .85rem 2rem; border: 0; border-radius: 999px;
-  background: var(--cta-gradient); color: var(--primary-foreground);
-  font-family: var(--font-inter); font-size: 1rem; font-weight: 600; line-height: 1.35;
-  text-align: center; white-space: normal; cursor: pointer;
-  box-shadow: none; transition: filter .2s, transform .2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  max-width: 100%;
+  min-height: 3.25rem;
+  padding: 0.85rem 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cta-gradient);
+  color: var(--primary-foreground);
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+  box-shadow: none;
+  transition:
+    filter 0.2s,
+    transform 0.2s;
 }
-.llms-lesson-button-wrapper #llms_mark_complete:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.llms-lesson-button-wrapper #llms_mark_complete:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
 .llms-lesson-button-wrapper #llms_mark_complete:focus-visible,
-.llms-course-navigation .llms-lesson-link:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
-.llms-course-navigation {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem;
-  margin: 1.5rem 0 3rem; padding: 0; clear: both;
+.llms-course-navigation .llms-lesson-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
 }
-.llms-course-navigation .llms-course-nav { float: none; width: auto; min-width: 0; margin: 0; padding: 0; }
-.llms-course-navigation .llms-lesson-preview { height: 100%; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; }
+.llms-course-navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 3rem;
+  padding: 0;
+  clear: both;
+}
+.llms-course-navigation .llms-course-nav {
+  float: none;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+.llms-course-navigation .llms-lesson-preview {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
 .llms-course-navigation .llms-lesson-link {
-  box-sizing: border-box; display: flex; align-items: center; width: 100%; height: 100% !important;
-  min-height: 7.25rem; padding: 1.5rem; border: 1px solid var(--border); border-radius: 1rem;
-  background: var(--card); color: var(--foreground); text-decoration: none;
-  box-shadow: none; transition: border-color .2s, background-color .2s, transform .2s;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100% !important;
+  min-height: 7.25rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  color: var(--foreground);
+  text-decoration: none;
+  box-shadow: none;
+  transition:
+    border-color 0.2s,
+    background-color 0.2s,
+    transform 0.2s;
 }
 .llms-course-navigation .llms-lesson-link:hover {
-  border-color: var(--primary); background: #242124; color: var(--foreground); transform: translateY(-2px);
+  border-color: var(--primary);
+  background: #242124;
+  color: var(--foreground);
+  transform: translateY(-2px);
 }
-.llms-course-navigation .llms-lesson-preview-row { display: block; width: 100%; }
-.llms-course-navigation .llms-main { width: 100%; min-width: 0; padding: 0; margin: 0; background: transparent; }
-.llms-course-navigation .llms-pre-text { margin: 0 0 .5rem; color: var(--muted-foreground); font-family: var(--font-inter); font-size: .875rem; font-weight: 400; line-height: 1.4; }
-.llms-course-navigation .llms-lesson-title { margin: 0; color: var(--foreground); font-family: var(--font-space-grotesk); font-size: clamp(1.1rem, 2vw, 1.4rem); font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
-.llms-course-navigation .llms-next-lesson .llms-main { text-align: right; }
-.llms-course-navigation .llms-lesson-link :is(.llms-icon, .llms-lesson-icon) { color: var(--primary); }
-@media (max-width: 640px) {
-  .llms-course-navigation { grid-template-columns: 1fr; gap: .85rem; }
-  .llms-course-navigation .llms-lesson-link { padding: 1.2rem; min-height: 6rem; }
-  .llms-lesson-button-wrapper #llms_mark_complete { width: 100%; }
-  .llms-lesson-button-wrapper .llms-complete-lesson-form { width: 100%; }
+.llms-course-navigation .llms-lesson-preview-row {
+  display: block;
+  width: 100%;
 }
-@media (prefers-reduced-motion: reduce) {
-  .llms-course-navigation .llms-lesson-link, .llms-lesson-button-wrapper #llms_mark_complete { transition: none; }
-  .llms-course-navigation .llms-lesson-link:hover, .llms-lesson-button-wrapper #llms_mark_complete:hover { transform: none; }
+.llms-course-navigation .llms-main {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
 }
-
-
-/* LifterLMS Gutenberg course syllabus: isolated from lesson navigation. */
-.wp-block-llms-course-continue-button { margin: 1.5rem 0 2.5rem; }
-.wp-block-llms-course-continue-button .llms-course-continue-button {
-  box-sizing: border-box; display: inline-flex; align-items: center; justify-content: center;
-  min-height: 3.25rem; padding: .85rem 2rem; border: 0; border-radius: 999px;
-  background: var(--cta-gradient); color: var(--primary-foreground);
-  font-family: var(--font-inter); font-size: 1rem; font-weight: 600; line-height: 1.4;
-  text-decoration: none; box-shadow: none; transition: filter .2s, transform .2s;
+.llms-course-navigation .llms-pre-text {
+  margin: 0 0 0.5rem;
+  color: var(--muted-foreground);
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.4;
 }
-.wp-block-llms-course-continue-button .llms-course-continue-button:hover {
-  color: var(--primary-foreground); filter: brightness(1.08); transform: translateY(-1px);
-}
-.wp-block-llms-course-continue-button .llms-course-continue-button:focus-visible,
-.wp-block-llms-course-syllabus .llms-lesson-link:focus-visible {
-  outline: 2px solid var(--primary); outline-offset: 3px;
-}
-.wp-block-llms-course-syllabus .llms-syllabus-wrapper { margin: 0; padding: 0; color: var(--foreground); }
-.wp-block-llms-course-syllabus .llms-section-title {
-  margin: 2rem 0 1rem; color: var(--foreground);
-  font-family: var(--font-space-grotesk); font-size: clamp(1.35rem, 2.5vw, 1.75rem);
-  font-weight: 700; line-height: 1.3;
-}
-.wp-block-llms-course-syllabus .llms-lesson-preview {
-  box-sizing: border-box; margin: 0 0 .75rem; padding: 0;
-  border: 1px solid var(--border); border-radius: 1rem;
-  background: var(--card); color: var(--foreground); overflow: hidden;
-  box-shadow: none; transition: border-color .2s, transform .2s;
-}
-.wp-block-llms-course-syllabus .llms-lesson-preview:hover {
-  border-color: var(--primary); transform: translateY(-1px);
-}
-.wp-block-llms-course-syllabus .llms-lesson-link {
-  box-sizing: border-box; display: block; width: 100%; height: auto !important;
-  padding: 1.25rem 1.5rem; background: transparent; color: var(--foreground);
-  text-decoration: none; box-shadow: none;
-}
-.wp-block-llms-course-syllabus .llms-lesson-link:hover { background: transparent; color: var(--foreground); }
-.wp-block-llms-course-syllabus .llms-lesson-preview-row {
-  display: flex; align-items: flex-start; gap: 1rem; width: 100%;
-}
-.wp-block-llms-course-syllabus .llms-main {
-  flex: 1 1 auto; order: 0; width: auto; min-width: 0;
-  margin: 0; padding: 0; background: transparent; color: var(--foreground);
-}
-.wp-block-llms-course-syllabus .llms-lesson-title {
-  margin: 0; color: var(--foreground); font-family: var(--font-space-grotesk);
-  font-size: clamp(1rem, 2vw, 1.2rem); font-weight: 650; line-height: 1.4;
+.llms-course-navigation .llms-lesson-title {
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.35;
   overflow-wrap: anywhere;
 }
-.wp-block-llms-course-syllabus .llms-lesson-preview.is-complete .llms-lesson-title {
-  color: var(--muted-foreground); text-decoration: line-through; text-decoration-thickness: 1px;
+.llms-course-navigation .llms-next-lesson .llms-main {
+  text-align: right;
+}
+.llms-course-navigation .llms-lesson-link :is(.llms-icon, .llms-lesson-icon) {
+  color: var(--primary);
+}
+@media (max-width: 640px) {
+  .llms-course-navigation {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+  .llms-course-navigation .llms-lesson-link {
+    padding: 1.2rem;
+    min-height: 6rem;
+  }
+  .llms-lesson-button-wrapper #llms_mark_complete {
+    width: 100%;
+  }
+  .llms-lesson-button-wrapper .llms-complete-lesson-form {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .llms-course-navigation .llms-lesson-link,
+  .llms-lesson-button-wrapper #llms_mark_complete {
+    transition: none;
+  }
+  .llms-course-navigation .llms-lesson-link:hover,
+  .llms-lesson-button-wrapper #llms_mark_complete:hover {
+    transform: none;
+  }
+}
+
+/* LifterLMS Gutenberg course syllabus: isolated from lesson navigation. */
+.wp-block-llms-course-continue-button {
+  margin: 1.5rem 0 2.5rem;
+}
+.wp-block-llms-course-continue-button .llms-course-continue-button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding: 0.85rem 2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--cta-gradient);
+  color: var(--primary-foreground);
+  font-family: var(--font-inter);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  box-shadow: none;
+  transition:
+    filter 0.2s,
+    transform 0.2s;
+}
+.wp-block-llms-course-continue-button .llms-course-continue-button:hover {
+  color: var(--primary-foreground);
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.wp-block-llms-course-continue-button
+  .llms-course-continue-button:focus-visible,
+.wp-block-llms-course-syllabus .llms-lesson-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.wp-block-llms-course-syllabus .llms-syllabus-wrapper {
+  margin: 0;
+  padding: 0;
+  color: var(--foreground);
+}
+.wp-block-llms-course-syllabus .llms-section-title {
+  margin: 2rem 0 1rem;
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+.wp-block-llms-course-syllabus .llms-lesson-preview {
+  box-sizing: border-box;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--card);
+  color: var(--foreground);
+  overflow: hidden;
+  box-shadow: none;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.wp-block-llms-course-syllabus .llms-lesson-preview:hover {
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+.wp-block-llms-course-syllabus .llms-lesson-link {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: auto !important;
+  padding: 1.25rem 1.5rem;
+  background: transparent;
+  color: var(--foreground);
+  text-decoration: none;
+  box-shadow: none;
+}
+.wp-block-llms-course-syllabus .llms-lesson-link:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+.wp-block-llms-course-syllabus .llms-lesson-preview-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  width: 100%;
+}
+.wp-block-llms-course-syllabus .llms-main {
+  flex: 1 1 auto;
+  order: 0;
+  width: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--foreground);
+}
+.wp-block-llms-course-syllabus .llms-lesson-title {
+  margin: 0;
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.wp-block-llms-course-syllabus
+  .llms-lesson-preview.is-complete
+  .llms-lesson-title {
+  color: var(--muted-foreground);
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
 }
 .wp-block-llms-course-syllabus .llms-extra {
-  display: flex; flex-direction: column; align-items: flex-end; gap: .5rem;
-  flex: 0 0 auto; order: 0; float: none; width: auto; min-width: 4.5rem;
-  margin: 0; padding: 0; background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  order: 0;
+  float: none;
+  width: auto;
+  min-width: 4.5rem;
+  margin: 0;
+  padding: 0;
+  background: transparent;
 }
 .wp-block-llms-course-syllabus .llms-lesson-counter {
-  color: var(--muted-foreground); font-size: .875rem; line-height: 1.4; white-space: nowrap;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  white-space: nowrap;
 }
-.wp-block-llms-course-syllabus .llms-lesson-complete { color: var(--muted-foreground); font-size: 1.2rem; }
-.wp-block-llms-course-syllabus .is-complete .llms-lesson-complete { color: var(--primary); }
+.wp-block-llms-course-syllabus .llms-lesson-complete {
+  color: var(--muted-foreground);
+  font-size: 1.2rem;
+}
+.wp-block-llms-course-syllabus .is-complete .llms-lesson-complete {
+  color: var(--primary);
+}
 .wp-block-llms-course-syllabus .llms-favorite-wrapper {
-  display: flex; align-items: center; gap: .4rem; margin-top: .65rem;
-  color: var(--muted-foreground); font-size: .875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.65rem;
+  color: var(--muted-foreground);
+  font-size: 0.875rem;
 }
 .wp-block-llms-course-syllabus .llms-favorite-btn {
-  color: var(--muted-foreground); cursor: pointer; font-size: 1.15rem;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-size: 1.15rem;
 }
 .wp-block-llms-course-syllabus .llms-favorite-btn:hover,
-.wp-block-llms-course-syllabus .llms-favorite-btn.fa-heart { color: var(--primary); }
-.wp-block-llms-course-syllabus .llms-favorites-count { color: var(--muted-foreground); }
+.wp-block-llms-course-syllabus .llms-favorite-btn.fa-heart {
+  color: var(--primary);
+}
+.wp-block-llms-course-syllabus .llms-favorites-count {
+  color: var(--muted-foreground);
+}
 @media (max-width: 640px) {
-  .wp-block-llms-course-syllabus .llms-lesson-link { padding: 1rem; }
-  .wp-block-llms-course-syllabus .llms-lesson-preview-row { gap: .6rem; }
-  .wp-block-llms-course-syllabus .llms-extra { min-width: 3.5rem; }
-  .wp-block-llms-course-continue-button .llms-course-continue-button { max-width: 100%; }
+  .wp-block-llms-course-syllabus .llms-lesson-link {
+    padding: 1rem;
+  }
+  .wp-block-llms-course-syllabus .llms-lesson-preview-row {
+    gap: 0.6rem;
+  }
+  .wp-block-llms-course-syllabus .llms-extra {
+    min-width: 3.5rem;
+  }
+  .wp-block-llms-course-continue-button .llms-course-continue-button {
+    max-width: 100%;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .wp-block-llms-course-syllabus .llms-lesson-preview,
-  .wp-block-llms-course-continue-button .llms-course-continue-button { transition: none; }
+  .wp-block-llms-course-continue-button .llms-course-continue-button {
+    transition: none;
+  }
   .wp-block-llms-course-syllabus .llms-lesson-preview:hover,
-  .wp-block-llms-course-continue-button .llms-course-continue-button:hover { transform: none; }
+  .wp-block-llms-course-continue-button .llms-course-continue-button:hover {
+    transform: none;
+  }
 }
 
 /* Syllabus layout correction: restore native visual positions. */
-.wp-block-llms-course-syllabus .llms-lesson-preview-row { display: flex; align-items: flex-start; }
-.wp-block-llms-course-syllabus .llms-lesson-preview-row > .llms-main { order: 1; flex: 1 1 auto; min-width: 0; }
+.wp-block-llms-course-syllabus .llms-lesson-preview-row {
+  display: flex;
+  align-items: flex-start;
+}
+.wp-block-llms-course-syllabus .llms-lesson-preview-row > .llms-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
 .wp-block-llms-course-syllabus .llms-lesson-preview-row > .llms-extra {
-  order: 2; flex: 0 0 auto; display: flex; flex-direction: column;
-  align-items: flex-end; text-align: right; margin-left: auto;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  margin-left: auto;
 }
 .wp-block-llms-course-syllabus .llms-lesson-preview .llms-lesson-link,
 .wp-block-llms-course-syllabus .llms-lesson-preview .llms-lesson-link:hover,
 .wp-block-llms-course-syllabus .llms-lesson-preview .llms-lesson-link:focus {
-  border: 0; border-top: 0; outline-offset: 3px;
+  border: 0;
+  border-top: 0;
+  outline-offset: 3px;
 }
-.wp-block-llms-course-syllabus .llms-lesson-preview { border-top-color: var(--border); }
-.wp-block-llms-course-syllabus .llms-lesson-preview:first-of-type { border-top-color: var(--border); }
+.wp-block-llms-course-syllabus .llms-lesson-preview {
+  border-top-color: var(--border);
+}
+.wp-block-llms-course-syllabus .llms-lesson-preview:first-of-type {
+  border-top-color: var(--border);
+}
 .wp-block-llms-course-syllabus .llms-lesson-preview::before,
-.wp-block-llms-course-syllabus .llms-lesson-preview::after { border: 0; box-shadow: none; }
+.wp-block-llms-course-syllabus .llms-lesson-preview::after {
+  border: 0;
+  box-shadow: none;
+}
