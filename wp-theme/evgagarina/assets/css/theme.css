@@ -685,3 +685,51 @@
   color: var(--muted-foreground);
 }
 .evg-llms-account .acc-content .llms-notification + .llms-notification { margin-top: 0.75rem; }
+
+
+/* WordPress comments: native markup, site design tokens. */
+.evg-comments { margin: 3rem 0; color: var(--foreground); font-family: var(--font-inter); }
+.evg-comments__title { margin: 0 0 1.5rem; font-family: var(--font-space-grotesk); font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 700; line-height: 1.25; }
+.evg-comments__list, .evg-comments__list .children { list-style: none; margin: 0; padding: 0; }
+.evg-comments__list > li { margin-bottom: 1rem; }
+.evg-comments__list .children { margin: 1rem 0 0 clamp(.75rem, 3vw, 2rem); padding-left: 1rem; border-left: 1px solid var(--border); }
+.evg-comments__list .comment-body { padding: 1.25rem; border: 1px solid var(--border); border-radius: 1rem; background: var(--card); overflow-wrap: anywhere; }
+.evg-comments__list .comment-meta { margin-bottom: .9rem; }
+.evg-comments__list .comment-author { display: flex; align-items: center; flex-wrap: wrap; gap: .65rem; font-style: normal; }
+.evg-comments__list .comment-author .avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.evg-comments__list .comment-author .fn { font-weight: 650; }
+.evg-comments__list .comment-author .says { display: none; }
+.evg-comments__list a { color: var(--foreground); text-decoration: none; }
+.evg-comments__list a:hover { color: var(--primary); }
+.evg-comments__list .comment-metadata { margin: .25rem 0 0; color: var(--muted-foreground); font-size: .8rem; }
+.evg-comments__list .comment-metadata a { color: inherit; }
+.evg-comments__list .comment-content { line-height: 1.7; }
+.evg-comments__list .comment-content p { margin: 0 0 .75rem; }
+.evg-comments__list .comment-content p:last-child { margin-bottom: 0; }
+.evg-comments__list .reply { margin-top: 1rem; }
+.evg-comments__list .comment-reply-link, .evg-comments__navigation a { display: inline-flex; padding: .45rem .9rem; border: 1px solid var(--border); border-radius: 999px; font-size: .875rem; color: var(--foreground); }
+.evg-comments__list .comment-reply-link:hover, .evg-comments__navigation a:hover { border-color: var(--primary); color: var(--foreground); }
+.evg-comments__list .comment-awaiting-moderation { display: block; margin: .5rem 0; color: var(--muted-foreground); font-size: .875rem; }
+.evg-comments__navigation { margin: 1.5rem 0; }
+.evg-comments__navigation .nav-links { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.evg-comments .comment-respond { margin-top: 2rem; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--border); border-radius: 1rem; background: var(--card); }
+.evg-comments__list .comment-respond { margin: 1rem 0; }
+.evg-comments .comment-reply-title small { margin-left: .75rem; font-family: var(--font-inter); font-size: .875rem; font-weight: 400; }
+.evg-comments .comment-reply-title small a { color: var(--muted-foreground); }
+.evg-comments__form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.evg-comments__form > p { min-width: 0; margin: 0; }
+.evg-comments__form .comment-notes, .evg-comments__form .logged-in-as, .evg-comments__form .comment-form-comment, .evg-comments__form .comment-form-url, .evg-comments__form .comment-form-cookies-consent, .evg-comments__form .form-submit, .evg-comments__form .must-log-in { grid-column: 1 / -1; }
+.evg-comments__form label { display: block; margin-bottom: .5rem; color: var(--foreground); font-size: .875rem; }
+.evg-comments__form input:not([type="checkbox"]), .evg-comments__form textarea { box-sizing: border-box; display: block; width: 100%; min-height: 3rem; padding: .8rem 1rem; border: 1px solid var(--border); border-radius: .75rem; background: var(--background); color: var(--foreground); font: inherit; }
+.evg-comments__form textarea { resize: vertical; min-height: 9rem; }
+.evg-comments__form input:focus-visible, .evg-comments__form textarea:focus-visible, .evg-comments__form button:focus-visible, .evg-comments__form .evg-comments__submit:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.evg-comments__form .comment-form-cookies-consent { display: flex; align-items: flex-start; gap: .65rem; }
+.evg-comments__form .comment-form-cookies-consent input { margin-top: .25rem; accent-color: var(--primary); }
+.evg-comments__form .comment-form-cookies-consent label { margin: 0; color: var(--muted-foreground); }
+.evg-comments__form .comment-notes, .evg-comments__form .logged-in-as { color: var(--muted-foreground); font-size: .875rem; }
+.evg-comments__form .logged-in-as a { color: var(--foreground); }
+.evg-comments__form .required { color: var(--primary); }
+.evg-comments__form .evg-comments__submit { display: inline-flex; justify-content: center; align-items: center; min-height: 3rem; padding: .75rem 1.5rem; border: 0; border-radius: 999px; background: var(--cta-gradient); color: var(--primary-foreground); font: inherit; font-weight: 600; cursor: pointer; }
+.evg-comments__form .evg-comments__submit:hover { filter: brightness(1.08); }
+.evg-comments__closed { color: var(--muted-foreground); }
+@media (max-width: 600px) { .evg-comments__form { grid-template-columns: 1fr; } .evg-comments__form > p { grid-column: 1 / -1; } .evg-comments__list .comment-body { padding: 1rem; } }
