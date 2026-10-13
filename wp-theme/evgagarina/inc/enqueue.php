@@ -13,7 +13,8 @@ function evg_asset_version( $relative ) {
 }
 
 function evg_enqueue_assets() {
-	wp_enqueue_style( 'evg-main', EVG_URI . '/assets/css/main.css', array(), evg_asset_version( '/assets/css/main.css' ) );
+	wp_enqueue_style( 'evg-montserrat', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300..900&display=swap', array(), null );
+	wp_enqueue_style( 'evg-main', EVG_URI . '/assets/css/main.css', array( 'evg-montserrat' ), evg_asset_version( '/assets/css/main.css' ) );
 	wp_enqueue_style( 'evg-theme', EVG_URI . '/assets/css/theme.css', array( 'evg-main' ), evg_asset_version( '/assets/css/theme.css' ) );
 	wp_enqueue_style( 'evg-style', get_stylesheet_uri(), array( 'evg-theme' ), EVG_VERSION );
 
