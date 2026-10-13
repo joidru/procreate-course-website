@@ -15,11 +15,11 @@ if ($data['enabled'] !== 'yes') return;
 </div>
 <?php if (!empty($data['items'])) : ?>
 <ul class="grid gap-x-6 gap-y-1 sm:grid-cols-2">
-<?php foreach ($data['items'] as $item) : ?>
+<?php foreach (evg_course_included_normalize_items($data['items']) as $item) : ?>
 <li class="flex items-start gap-3 border-b border-border/70 py-3 text-sm text-foreground">
 <span class="mt-0.5 flex h-5 w-5 flex-none items-center justify-center rounded-full bg-primary/10 text-primary">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check h-3.5 w-3.5" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
-</span><?php echo esc_html($item); ?></li>
+</span><?php echo esc_html($item['text']); ?></li>
 <?php endforeach; ?>
 </ul>
 <?php endif; ?>
