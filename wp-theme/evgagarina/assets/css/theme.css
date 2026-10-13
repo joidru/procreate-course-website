@@ -209,7 +209,7 @@
 
 /* basics.html uses the original utility classes rather than the generic product layout. */
 .course-landing .course-landing-price > strong {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 2.25rem;
   line-height: 1.12;
   font-weight: 700;
@@ -296,7 +296,7 @@
 .product-title,
 .product-h2 {
   margin: 0;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -354,7 +354,7 @@
   align-items: baseline;
   gap: 0.75rem;
   margin: 0;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
 }
@@ -739,7 +739,7 @@
 }
 .acc-fieldset legend {
   padding: 0 0 1rem;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--foreground);
@@ -778,7 +778,7 @@
   gap: 1rem;
 }
 .acc-order-number {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--foreground);
@@ -845,7 +845,7 @@
   text-decoration: none !important;
 }
 .acc-download-file {
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--foreground);
@@ -896,7 +896,7 @@
 .evg-llms-account .acc-content .llms-sd-section-title,
 .evg-llms-account .acc-content .llms-sd-title {
   margin: 0 0 1.25rem;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -956,7 +956,7 @@
 .evg-llms-account .acc-content .llms-achievement-title {
   margin: 0;
   padding: 1.25rem 1.25rem 0.5rem;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -1057,7 +1057,7 @@
 }
 .evg-comments__title {
   margin: 0 0 1.5rem;
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 700;
   line-height: 1.25;
@@ -1333,7 +1333,7 @@
   ) {
   margin: 0 0 1.25rem;
   color: var(--foreground);
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 700;
   line-height: 1.3;
@@ -1626,7 +1626,7 @@
 .llms-course-navigation .llms-lesson-title {
   margin: 0;
   color: var(--foreground);
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   font-weight: 700;
   line-height: 1.35;
@@ -1709,7 +1709,7 @@
 .wp-block-llms-course-syllabus .llms-section-title {
   margin: 2rem 0 1rem;
   color: var(--foreground);
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1.35rem, 2.5vw, 1.75rem);
   font-weight: 700;
   line-height: 1.3;
@@ -1766,7 +1766,7 @@
 .wp-block-llms-course-syllabus .llms-lesson-title {
   margin: 0;
   color: var(--foreground);
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-montserrat);
   font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 650;
   line-height: 1.4;
