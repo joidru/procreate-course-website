@@ -21,6 +21,7 @@ require EVG_DIR . '/inc/auth.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require EVG_DIR . '/inc/woocommerce.php';
+	require EVG_DIR . '/inc/course-program-admin.php';
 }
 
 if ( class_exists( 'LifterLMS' ) ) {
