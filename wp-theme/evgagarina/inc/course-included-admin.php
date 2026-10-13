@@ -33,23 +33,23 @@ function evg_course_included_metabox($post) {
     $data = evg_course_included_get($post->ID);
     wp_nonce_field('evg_save_course_included', 'evg_course_included_nonce');
     ?>
-    <div class="evg-included-editor">
+    <div class="evg-included-editor evg-metabox-editor">
         <p><label><input type="checkbox" name="evg_included_enabled" value="yes" <?php checked($data['enabled'], 'yes'); ?>> Показывать блок «Что входит»</label></p>
         <p><label for="evg-included-title"><strong>Заголовок</strong></label><input class="widefat" id="evg-included-title" name="evg_included_title" value="<?php echo esc_attr($data['title']); ?>"></p>
         <p><label for="evg-included-subtitle"><strong>Подзаголовок / описание</strong></label><textarea class="widefat" rows="3" id="evg-included-subtitle" name="evg_included_subtitle"><?php echo esc_textarea($data['subtitle']); ?></textarea></p>
         <h3>Пункты списка</h3>
-        <div id="evg-included-items"><?php foreach ($data['items'] as $item) evg_course_included_item($item); ?></div>
-        <p><button type="button" class="button button-secondary" id="evg-included-add">+ Добавить пункт</button></p>
+        <div id="evg-included-items" class="evg-metabox-items"><?php foreach ($data['items'] as $item) evg_course_included_item($item); ?></div>
+        <p><button type="button" class="button button-secondary" id="evg-included-add" class="evg-metabox-add">+ Добавить пункт</button></p>
         <p class="description">Перемещайте пункты за заголовок или кнопками ↑ ↓. Для сохранения нажмите «Обновить» у товара.</p>
-        <template id="evg-included-template"><?php evg_course_included_item(''); ?></template>
+        <template id="evg-included-template" class="evg-metabox-template"><?php evg_course_included_item(''); ?></template>
     </div>
     <?php
 }
 function evg_course_included_item($value) {
     ?>
-    <div class="evg-included-item" draggable="true">
-        <div class="evg-included-item-head"><span class="dashicons dashicons-move" aria-hidden="true"></span><strong class="evg-included-item-label"><?php echo esc_html($value ?: 'Новый пункт'); ?></strong><span class="evg-included-actions"><button type="button" class="button-link evg-included-up" aria-label="Вверх">↑</button> <button type="button" class="button-link evg-included-down" aria-label="Вниз">↓</button> <button type="button" class="button-link evg-included-duplicate">Дублировать</button> <button type="button" class="button-link-delete evg-included-remove">Удалить</button></span></div>
-        <div class="evg-included-item-fields"><label>Текст пункта<input class="widefat evg-included-item-text" name="evg_included_items[]" value="<?php echo esc_attr($value); ?>"></label></div>
+    <div class="evg-included-item evg-metabox-item" data-empty-label="Новый пункт" draggable="true">
+        <div class="evg-included-item-head evg-metabox-item-head"><span class="dashicons dashicons-move" aria-hidden="true"></span><strong class="evg-included-item-label evg-metabox-item-label"><?php echo esc_html($value ?: 'Новый пункт'); ?></strong><span class="evg-included-actions evg-metabox-actions"><button type="button" class="button-link evg-included-up evg-metabox-up" aria-label="Вверх">↑</button> <button type="button" class="button-link evg-included-down evg-metabox-down" aria-label="Вниз">↓</button> <button type="button" class="button-link evg-included-duplicate evg-metabox-duplicate">Дублировать</button> <button type="button" class="button-link-delete evg-included-remove evg-metabox-remove">Удалить</button></span></div>
+        <div class="evg-included-item-fields evg-metabox-item-fields"><label>Текст пункта<input class="widefat evg-included-item-text evg-metabox-item-title" name="evg_included_items[]" value="<?php echo esc_attr($value); ?>"></label></div>
     </div>
     <?php
 }
@@ -73,6 +73,6 @@ add_action('save_post_product', function($post_id) {
 add_action('admin_enqueue_scripts', function($hook) {
     $screen = get_current_screen();
     if (!$screen || $screen->post_type !== 'product' || !in_array($hook, array('post.php', 'post-new.php'), true)) return;
-    wp_enqueue_style('evg-course-included-admin', EVG_URI . '/assets/css/course-included-admin.css', array(), EVG_VERSION);
-    wp_enqueue_script('evg-course-included-admin', EVG_URI . '/assets/js/course-included-admin.js', array(), EVG_VERSION, true);
+    wp_enqueue_style('evg-product-metaboxes', EVG_URI . '/assets/css/product-metaboxes.css', array(), EVG_VERSION);
+    wp_enqueue_script('evg-product-metaboxes', EVG_URI . '/assets/js/product-metaboxes.js', array(), EVG_VERSION, true);
 });
