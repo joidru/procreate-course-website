@@ -22,7 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
         preview.innerHTML = icons[select.value];
       }
     }
+    function syncIncludedSelection(item) {
+      const checkbox = item.querySelector('.evg-included-item-selected');
+      const hidden = item.querySelector('.evg-included-item-selected-value');
+      if (checkbox && hidden) hidden.value = checkbox.checked ? 'yes' : 'no';
+    }
     function bind(item) {
+      item.querySelector('.evg-included-item-selected')?.addEventListener('change', () => syncIncludedSelection(item));
+      syncIncludedSelection(item);
       item.querySelector('.evg-metabox-item-title')?.addEventListener('input', () => updateLabel(item));
       item.querySelector('.evg-metabox-remove')?.addEventListener('click', () => item.remove());
       item.querySelector('.evg-metabox-duplicate')?.addEventListener('click', () => {
@@ -59,6 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     add.addEventListener('click', () => {
       const item = template.content.querySelector('.evg-metabox-item')?.cloneNode(true);
       if (!item) return;
+      const checkbox = item.querySelector('.evg-included-item-selected');
+      if (checkbox) checkbox.checked = false;
       list.appendChild(item);
       bind(item);
       item.querySelector('.evg-metabox-item-title')?.focus();
