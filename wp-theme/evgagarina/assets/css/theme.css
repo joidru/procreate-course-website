@@ -1898,3 +1898,33 @@
   line-height: 1.5;
   text-align: center;
 }
+
+/* Already purchased course: use the same dashed notice treatment. */
+.course-landing-purchase .course-purchase-owned {
+  margin: 2rem 0 0;
+  padding: 1.1rem 1.25rem;
+  border: 1px dashed color-mix(in oklab, #55c99b 55%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, #55c99b 7%, transparent);
+  color: var(--foreground);
+  text-align: center;
+}
+.course-purchase-owned__heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  font-size: .9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.course-purchase-owned__heading svg {
+  flex: none;
+  color: #55c99b;
+}
+.course-purchase-owned p {
+  margin: .5rem 0 0;
+  color: var(--muted-foreground);
+  font-size: .875rem;
+  line-height: 1.5;
+}
