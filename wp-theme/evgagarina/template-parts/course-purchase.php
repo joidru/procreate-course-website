@@ -13,6 +13,6 @@ if ( $in_cart && $product->is_type( 'simple' ) ) {
 <?php elseif ( ! $product->is_type( 'simple' ) ) : ?>
 <?php woocommerce_template_single_add_to_cart(); ?>
 <?php else : ?>
-<p class="mt-8 text-muted-foreground" role="status"><?php esc_html_e( 'Набор на курс сейчас закрыт.', 'evgagarina' ); ?></p>
+<p class="course-purchase-unavailable" role="status"><?php esc_html_e( 'Набор на курс сейчас закрыт.', 'evgagarina' ); ?></p>
 <?php endif; ?>
 </div>
