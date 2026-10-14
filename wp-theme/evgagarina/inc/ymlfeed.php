@@ -36,7 +36,7 @@ function my_custom_save_function($post_id, $post, $update)
 
         foreach ($products as $product) {
             $programms = evg_course_program_get($product->get_id());
-            if ($programms['enabled'] !== 'yes') return;
+            if ($programms['enabled'] !== 'yes') continue;
             $_duration = $product->get_meta('_duration');
             $_duration_count = $product->get_meta('_duration_count');
             if (!$_duration_count) continue;
@@ -59,7 +59,7 @@ function my_custom_save_function($post_id, $post, $update)
 
             foreach ($programms['items'] as $item) {
 
-                if (!$item['title'] && !empty($item['description'])) {
+                if (!empty($item['title']) && !empty($item['description'])) {
                     $yml .= '<param name="План" unit="' . esc_html($item['title']) . '">' . esc_html($item['description']) . '</param>';
                 }
             }
