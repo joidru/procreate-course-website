@@ -6,14 +6,14 @@ global $product; ?>
             <div class="flex flex-col items-start">
                 <?php
                 $stock_status = $product->get_stock_status();
-                $course_status = 'onbackorder' === $stock_status ? 'preorder' : ('instock' === $stock_status ? 'available' : '');
+                $course_status = 'onbackorder' === $stock_status ? 'preorder' : ('instock' === $stock_status ? 'available' : ('outofstock' === $stock_status ? 'unavailable' : ''));
                 ?>
                 <div class="course-hero-badges">
                     <p class="home-eyebrow"><?php echo esc_html(evg_mod('evg_hero_eyebrow')); ?></p>
                     <?php if ($course_status) : ?>
                         <span class="course-status-badge course-status-badge--<?php echo esc_attr($course_status); ?>">
                             <span class="course-status-badge__dot" aria-hidden="true"></span>
-                            <?php echo esc_html('preorder' === $course_status ? 'Предзаказ' : 'Доступен'); ?>
+                            <?php echo esc_html('preorder' === $course_status ? 'Предзаказ' : ('available' === $course_status ? 'Доступен' : 'Недоступен')); ?>
                         </span>
                     <?php endif; ?>
                 </div>
