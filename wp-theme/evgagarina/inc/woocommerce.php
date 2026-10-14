@@ -131,29 +131,8 @@ function evg_product_kind( WC_Product $product ) {
 	return __( 'Курс', 'evgagarina' );
 }
 
-/**
- * FAQ товара из поля «Вопросы и ответы»: блоки через пустую строку,
- * первая строка блока — вопрос, остальное — ответ.
- *
- * @return array<int, array{q: string, a: string}>
- */
-function evg_product_faq( WC_Product $product ) {
-	$raw = (string) get_post_meta( $product->get_id(), '_evg_faq', true );
-	$faq = array();
-	foreach ( preg_split( "/\R\s*\R/", trim( $raw ) ) as $block ) {
-		$lines = preg_split( '/\R/', trim( $block ), 2 );
-		if ( ! empty( $lines[0] ) && ! empty( $lines[1] ) ) {
-			$faq[] = array(
-				'q' => trim( $lines[0] ),
-				'a' => trim( $lines[1] ),
-			);
-		}
-	}
-	return $faq;
-}
-
 /* ---------------------------------------------------------------------------
- * Поля товара в админке: подпись карточки и FAQ.
+ * Поля товара в админке: подпись карточки.
  * ------------------------------------------------------------------------- */
 function evg_product_admin_fields() {
 	echo '<div class="options_group">';
@@ -166,15 +145,6 @@ function evg_product_admin_fields() {
 			'description' => __( 'Показывается в каталоге после рубрики: «Курс · 30 уроков».', 'evgagarina' ),
 		)
 	);
-	woocommerce_wp_textarea_input(
-		array(
-			'id'          => '_evg_faq',
-			'label'       => __( 'Вопросы и ответы', 'evgagarina' ),
-			'rows'        => 8,
-			'style'       => 'height:12em',
-			'description' => __( 'Каждый вопрос — отдельный блок через пустую строку. Первая строка — вопрос, дальше — ответ.', 'evgagarina' ),
-		)
-	);
 	echo '</div>';
 }
 add_action( 'woocommerce_product_options_general_product_data', 'evg_product_admin_fields' );
@@ -184,9 +154,6 @@ function evg_product_admin_save( $post_id ) {
 	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	if ( isset( $_POST['_evg_card_note'] ) ) {
 		update_post_meta( $post_id, '_evg_card_note', sanitize_text_field( wp_unslash( $_POST['_evg_card_note'] ) ) );
-	}
-	if ( isset( $_POST['_evg_faq'] ) ) {
-		update_post_meta( $post_id, '_evg_faq', sanitize_textarea_field( wp_unslash( $_POST['_evg_faq'] ) ) );
 	}
 	// phpcs:enable
 }
