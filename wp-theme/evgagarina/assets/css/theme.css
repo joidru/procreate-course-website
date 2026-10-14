@@ -1868,3 +1868,12 @@
   min-height: 3rem;
   margin: 0;
 }
+
+
+/* Responsive visibility helpers: override unlayered .hidden rules from plugins.
+   These live outside @layer utilities intentionally. */
+@media (min-width: 48rem) {
+  .hidden.md\\:block { display: block; }
+  .hidden.md\\:flex { display: flex; }
+  .hidden.md\\:inline-flex { display: inline-flex; }
+}
