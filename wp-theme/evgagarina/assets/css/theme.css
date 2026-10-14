@@ -1862,3 +1862,11 @@
     grid-template-columns: minmax(0, 1fr) !important;
   }
 }
+
+
+/* LifterLMS clearfix pseudo-elements must not occupy CSS Grid cells. */
+.llms-sd-section.llms-my-courses ul.llms-loop-list.llms-course-list::before,
+.llms-sd-section.llms-my-courses ul.llms-loop-list.llms-course-list::after {
+  content: none !important;
+  display: none !important;
+}
