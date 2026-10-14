@@ -11,8 +11,7 @@ global $product; ?>
                 <div class="course-hero-badges">
                     <p class="home-eyebrow"><?php echo esc_html(evg_mod('evg_hero_eyebrow')); ?></p>
                     <?php if ($course_status) : ?>
-                        <span class="course-status-badge course-status-badge--<?php echo esc_attr($course_status); ?>">
-                            <span class="course-status-badge__dot" aria-hidden="true"></span>
+                        <span class="home-eyebrow course-status--<?php echo esc_attr($course_status); ?>">
                             <?php echo esc_html('preorder' === $course_status ? 'Предзаказ' : ('available' === $course_status ? 'Доступен' : 'Недоступен')); ?>
                         </span>
                     <?php endif; ?>
