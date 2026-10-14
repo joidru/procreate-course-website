@@ -4,7 +4,19 @@ global $product; ?>
     <div class="mx-auto max-w-6xl px-5 pt-12 pb-6 md:px-8 md:pt-20 md:pb-16">
         <div class="grid items-center gap-10 md:grid-cols-2 md:gap-12">
             <div class="flex flex-col items-start">
-                <p class="home-eyebrow"><?php echo esc_html(evg_mod('evg_hero_eyebrow')); ?></p>
+                <?php
+                $stock_status = $product->get_stock_status();
+                $course_status = 'onbackorder' === $stock_status ? 'preorder' : ('instock' === $stock_status ? 'available' : '');
+                ?>
+                <div class="course-hero-badges">
+                    <p class="home-eyebrow"><?php echo esc_html(evg_mod('evg_hero_eyebrow')); ?></p>
+                    <?php if ($course_status) : ?>
+                        <span class="course-status-badge course-status-badge--<?php echo esc_attr($course_status); ?>">
+                            <span class="course-status-badge__dot" aria-hidden="true"></span>
+                            <?php echo esc_html('preorder' === $course_status ? 'Предзаказ' : 'Доступен'); ?>
+                        </span>
+                    <?php endif; ?>
+                </div>
                 <h1 class="mt-6 text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl md:text-6xl"><?php echo str_replace('Procreate', '<span class="text-primary">Procreate</span>', esc_html(get_the_title())); ?></h1>
                 <div class="mt-5 max-w-md text-pretty text-base leading-relaxed text-muted-foreground md:text-lg"><?php echo wp_kses_post(apply_filters('woocommerce_short_description', $product->get_short_description())); ?></div>
                 <?php get_template_part('template-parts/course-price', null, array('large' => false)); ?>
