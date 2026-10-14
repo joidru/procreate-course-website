@@ -1903,3 +1903,7 @@
 .course-status-badge--available .course-status-badge__dot {
   background: #55c99b;
 }
+
+.course-status-badge--unavailable .course-status-badge__dot {
+  background: #a69c96;
+}
