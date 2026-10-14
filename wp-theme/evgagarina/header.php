@@ -32,7 +32,7 @@ $evg_link_class = 'text-sm text-muted-foreground transition-colors hover:text-fo
 					<span><?php bloginfo('name'); ?></span>
 				</a>
 
-				<nav class="items-center gap-8 md:flex" aria-label="<?php esc_attr_e('Основная навигация', 'evgagarina'); ?>">
+				<nav class="items-center gap-8 hidden md:flex" aria-label="<?php esc_attr_e('Основная навигация', 'evgagarina'); ?>">
 					<?php evg_menu('primary', $evg_link_class); ?>
 				</nav>
 

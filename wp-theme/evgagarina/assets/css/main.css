@@ -1627,6 +1627,12 @@
   }
 
   @media (min-width: 40rem) {
+    .sm\:hidden {
+      display: none;
+    }
+    .sm\:flex {
+      display: flex;
+    }
     .sm\:w-auto {
       width: auto;
     }
