@@ -1869,4 +1869,37 @@
   margin: 0;
 }
 
-
+/* Course availability beside the hero eyebrow. */
+.course-hero-badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .625rem;
+}
+.course-hero-badges .home-eyebrow {
+  margin: 0;
+}
+.course-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  padding: .45rem .8rem;
+  border: 1px solid rgb(239 234 229 / 16%);
+  border-radius: 999px;
+  background: rgb(239 234 229 / 7%);
+  color: var(--foreground);
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.course-status-badge__dot {
+  width: .45rem;
+  height: .45rem;
+  flex: none;
+  border-radius: 50%;
+  background: #ef4d96;
+}
+.course-status-badge--available .course-status-badge__dot {
+  background: #55c99b;
+}
