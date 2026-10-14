@@ -23,6 +23,7 @@ if ( class_exists( 'WooCommerce' ) ) {
 	require EVG_DIR . '/inc/woocommerce.php';
 	require EVG_DIR . '/inc/course-program-admin.php';
 	require EVG_DIR . '/inc/course-included-admin.php';
+	require EVG_DIR . '/inc/course-faq-admin.php';
 }
 
 if ( class_exists( 'LifterLMS' ) ) {
