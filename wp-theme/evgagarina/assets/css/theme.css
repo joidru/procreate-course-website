@@ -1572,7 +1572,7 @@
     transform 0.2s;
 }
 .wp-block-llms-course-syllabus .llms-lesson-preview:hover {
-  border-color: var(--primary);
+  border-color: var(--primary) !important;
   transform: translateY(-1px);
 }
 .wp-block-llms-course-syllabus .llms-lesson-link {
@@ -1718,10 +1718,7 @@
   border-top: 0;
   outline-offset: 3px;
 }
-.wp-block-llms-course-syllabus .llms-lesson-preview {
-  border-top-color: var(--border);
-}
-.wp-block-llms-course-syllabus .llms-lesson-preview:first-of-type {
+.llms-syllabus-wrapper .llms-section-title + .llms-lesson-preview {
   border-top-color: var(--border);
 }
 .wp-block-llms-course-syllabus .llms-lesson-preview::before,
@@ -1729,7 +1726,6 @@
   border: 0;
   box-shadow: none;
 }
-
 
 /* LifterLMS purchased courses — visual skin only.
    Preserve plugin columns, clearfix, markup, image sizing and element order. */
@@ -1739,7 +1735,7 @@
   border-radius: 1.35rem !important;
   background: var(--card) !important;
   box-shadow: none !important;
-  transition: border-color .2s ease;
+  transition: border-color 0.2s ease;
 }
 .llms-sd-section.llms-my-courses .llms-loop-item-content:hover {
   border-color: rgb(239 77 150 / 45%) !important;
@@ -1748,9 +1744,18 @@
   color: var(--foreground) !important;
   text-decoration: none !important;
   background: transparent !important;
+  position: relative;
+  padding-top: 87% !important;
 }
 .llms-sd-section.llms-my-courses .llms-featured-image {
   border-radius: 0 !important;
+  height: 56%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .llms-sd-section.llms-my-courses .llms-loop-title {
   color: var(--foreground) !important;

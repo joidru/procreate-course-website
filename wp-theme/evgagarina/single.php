@@ -16,8 +16,14 @@ get_header();
 		the_post();
 	?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class('article-wrap'); ?>>
-			<a href="<?php echo esc_url(evg_blog_url()); ?>" class="checkout-back"><?php echo evg_icon('arrow-left', 16); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-																					?><?php esc_html_e('Все статьи', 'evgagarina'); ?></a>
+			<div class="breadcrumb">
+				<?php yoast_breadcrumb() ?>
+			</div>
+
+			<a href="<?php echo esc_url(evg_blog_url()); ?>" class="checkout-back">
+				<?php echo evg_icon('arrow-left', 16); ?>
+				<?php esc_html_e('Все статьи', 'evgagarina'); ?>
+			</a>
 
 			<header class="article-header">
 				<?php echo evg_post_tags_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
