@@ -153,6 +153,25 @@ function evg_product_admin_fields()
 			'description' => __('Показывается в каталоге после рубрики: «Курс · 30 уроков».', 'evgagarina'),
 		)
 	);
+	woocommerce_wp_select(array(
+		'id'      => '_duration',
+		'label' => 'Тип продолжительности',
+		'description' => 'час, день, месяц',
+		'desc_tip' => true,
+		'value' => get_post_meta(get_the_ID(), '_duration', true),
+		'options' => array(
+			'' => 'Выберите...',
+			'час' => 'час',
+			'день' => 'день',
+			'месяц' => 'месяц'
+		)
+	));
+	woocommerce_wp_text_input([
+		'id'            => '_duration_count',
+		'label'         => 'Число',
+		'description'   => 'Число продолжительности',
+		'placeholder'   => '3'
+	]);
 	echo '</div>';
 }
 add_action('woocommerce_product_options_general_product_data', 'evg_product_admin_fields');
@@ -163,6 +182,12 @@ function evg_product_admin_save($post_id)
 	// phpcs:disable WordPress.Security.NonceVerification.Missing
 	if (isset($_POST['_evg_card_note'])) {
 		update_post_meta($post_id, '_evg_card_note', sanitize_text_field(wp_unslash($_POST['_evg_card_note'])));
+	}
+	if (isset($_POST['_duration'])) {
+		update_post_meta($post_id, '_duration', sanitize_text_field(wp_unslash($_POST['_duration'])));
+	}
+	if (isset($_POST['_duration_count'])) {
+		update_post_meta($post_id, '_duration_count', sanitize_text_field(wp_unslash($_POST['_duration_count'])));
 	}
 	// phpcs:enable
 }
@@ -407,63 +432,63 @@ add_action('woocommerce_product_set_stock_status', 'evg_notify_course_available'
 
 function evg_notify_course_available($product_id, $stock_status, $product)
 {
-    if ('instock' !== $stock_status || ! $product instanceof WC_Product || $product->is_type('grouped') || $product->is_type('variable')) {
-        return;
-    }
+	if ('instock' !== $stock_status || ! $product instanceof WC_Product || $product->is_type('grouped') || $product->is_type('variable')) {
+		return;
+	}
 
-    // WooCommerce triggers this hook only on a stock-status transition.
-    $page = 1;
-    do {
-        $orders = wc_get_orders(array(
-            'status' => array('completed'),
-            'limit' => 100,
-            'paged' => $page,
-            'orderby' => 'date',
-            'order' => 'DESC',
-        ));
+	// WooCommerce triggers this hook only on a stock-status transition.
+	$page = 1;
+	do {
+		$orders = wc_get_orders(array(
+			'status' => array('completed'),
+			'limit' => 100,
+			'paged' => $page,
+			'orderby' => 'date',
+			'order' => 'DESC',
+		));
 
-        foreach ($orders as $order) {
-            $email = sanitize_email($order->get_billing_email());
-            if (! is_email($email)) {
-                continue;
-            }
+		foreach ($orders as $order) {
+			$email = sanitize_email($order->get_billing_email());
+			if (! is_email($email)) {
+				continue;
+			}
 
-            $contains_product = false;
-            foreach ($order->get_items('line_item') as $item) {
-                if ((int) $item->get_product_id() === (int) $product_id || (int) $item->get_variation_id() === (int) $product_id) {
-                    $contains_product = true;
-                    break;
-                }
-            }
-            if (! $contains_product) {
-                continue;
-            }
+			$contains_product = false;
+			foreach ($order->get_items('line_item') as $item) {
+				if ((int) $item->get_product_id() === (int) $product_id || (int) $item->get_variation_id() === (int) $product_id) {
+					$contains_product = true;
+					break;
+				}
+			}
+			if (! $contains_product) {
+				continue;
+			}
 
-            $meta_key = '_evg_course_launch_notified_' . absint($product_id);
-            if ($order->get_meta($meta_key, true)) {
-                continue;
-            }
+			$meta_key = '_evg_course_launch_notified_' . absint($product_id);
+			if ($order->get_meta($meta_key, true)) {
+				continue;
+			}
 
-            ob_start();
-            wc_get_template('emails/customer-preorder-available.php', array('product' => $product));
-            $message = ob_get_clean();
-            if (! $message) {
-                continue;
-            }
+			ob_start();
+			wc_get_template('emails/customer-preorder-available.php', array('product' => $product));
+			$message = ob_get_clean();
+			if (! $message) {
+				continue;
+			}
 
-            $sent = wp_mail(
-                $email,
-                'Старт курса «' . wp_strip_all_tags($product->get_name()) . '»',
-                $message,
-                array('Content-Type: text/html; charset=UTF-8')
-            );
+			$sent = wp_mail(
+				$email,
+				'Старт курса «' . wp_strip_all_tags($product->get_name()) . '»',
+				$message,
+				array('Content-Type: text/html; charset=UTF-8')
+			);
 
-            if ($sent) {
-                $order->update_meta_data($meta_key, current_time('mysql', true));
-                $order->save();
-            }
-        }
+			if ($sent) {
+				$order->update_meta_data($meta_key, current_time('mysql', true));
+				$order->save();
+			}
+		}
 
-        $page++;
-    } while (count($orders) === 100);
+		$page++;
+	} while (count($orders) === 100);
 }

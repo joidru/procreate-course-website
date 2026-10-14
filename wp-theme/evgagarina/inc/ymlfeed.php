@@ -35,6 +35,8 @@ function my_custom_save_function($post_id, $post, $update)
 ';
 
         foreach ($products as $product) {
+            $programms = evg_course_program_get($product->get_id());
+            if ($programms['enabled'] !== 'yes') return;
             $_duration = $product->get_meta('_duration');
             $_duration_count = $product->get_meta('_duration_count');
             if (!$_duration_count) continue;
@@ -54,32 +56,11 @@ function my_custom_save_function($post_id, $post, $update)
             if ($_duration_count && $_duration) {
                 $yml .= '<param name="Продолжительность" unit="' . $_duration . '">' . $_duration_count . '</param>';
             }
-            $plans = [
-                '_plan_1',
-                '_plan_2',
-                '_plan_3',
-                '_plan_4',
-                '_plan_5',
-                '_plan_6',
-                '_plan_7',
-                '_plan_8',
-            ];
-            foreach ($plans as $plan) {
-                $meta_plan = $product->get_meta($plan);
-                if ($meta_plan) {
-                    $meta_plan = trim(preg_replace('/\s+/', ' ', $meta_plan));
 
-                    $title_desc = explode(":", $meta_plan);
+            foreach ($programms['items'] as $item) {
 
-                    if (isset($title_desc[0], $title_desc[1])) {
-
-                        $name = trim(htmlspecialchars($title_desc[0], ENT_QUOTES, 'UTF-8'));
-                        $value = trim(htmlspecialchars($title_desc[1], ENT_QUOTES, 'UTF-8'));
-
-                        if (!empty($name) && !empty($value)) {
-                            $yml .= '<param name="План" unit="' . $name . '">' . $value . '</param>';
-                        }
-                    }
+                if (!$item['title'] && !empty($item['description'])) {
+                    $yml .= '<param name="План" unit="' . esc_html($item['title']) . '">' . esc_html($item['description']) . '</param>';
                 }
             }
 
