@@ -38,7 +38,7 @@ $evg_link_class = 'text-sm text-muted-foreground transition-colors hover:text-fo
 
 				<div class="flex items-center gap-1 md:gap-2">
 					<?php if (! $evg_on_account) : ?>
-						<a href="<?php echo esc_url(evg_section_url('courses')); ?>" class="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 md:inline-flex"><?php esc_html_e('Выбрать курс', 'evgagarina'); ?></a>
+						<a href="<?php echo esc_url(evg_section_url('courses')); ?>" class="rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 hidden md:inline-flex"><?php esc_html_e('Выбрать курс', 'evgagarina'); ?></a>
 					<?php endif; ?>
 
 					<?php if ($evg_logged_in) : ?>
