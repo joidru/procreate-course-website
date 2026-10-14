@@ -1870,3 +1870,34 @@
   content: none !important;
   display: none !important;
 }
+
+
+/* Course progress belongs directly under the thumbnail, before the title. */
+.llms-sd-section.llms-my-courses .llms-progress {
+  order: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: .65rem !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 1rem 1.25rem .25rem !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+.llms-sd-section.llms-my-courses .llms-progress .progress__indicator {
+  order: 0;
+  float: none !important;
+  width: auto !important;
+  margin: 0 !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  color: var(--muted-foreground) !important;
+  font-size: .875rem !important;
+  font-weight: 600;
+}
+.llms-sd-section.llms-my-courses .llms-progress .llms-progress-bar {
+  order: 1;
+  width: 100% !important;
+  margin: 0 !important;
+  flex: 0 0 auto;
+}
