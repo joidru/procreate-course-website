@@ -492,3 +492,18 @@ function evg_notify_course_available($product_id, $stock_status, $product)
 		$page++;
 	} while (count($orders) === 100);
 }
+/**
+ * Отправляет цель в Яндекс.Метрику, когда пользователь видит страницу "Мой аккаунт" после входа.
+ */
+add_action('template_redirect', 'send_ym_goal_on_account_page');
+function send_ym_goal_on_account_page()
+{
+
+	if (is_account_page() && is_user_logged_in() && isset($_GET['action']) && $_GET['action'] === 'login') {
+?>
+		<script type="text/javascript">
+			ym(92913389, 'reachGoal', 'auth');
+		</script>
+<?php
+	}
+}
