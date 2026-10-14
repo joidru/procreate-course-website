@@ -1791,3 +1791,80 @@
   border-radius: 999px !important;
   background: var(--primary) !important;
 }
+
+
+/* Course pricing: align WooCommerce variable-product selectors without
+   changing the form markup or variation selection behavior. */
+.course-landing .course-landing-purchase form.variations_form {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+.course-landing .course-landing-purchase .variations {
+  display: block;
+  width: 100%;
+  margin: 0 0 1rem;
+  border: 0;
+  border-collapse: collapse;
+}
+.course-landing .course-landing-purchase .variations tbody {
+  display: grid;
+  gap: 1rem;
+}
+.course-landing .course-landing-purchase .variations tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: .4rem;
+}
+.course-landing .course-landing-purchase .variations th,
+.course-landing .course-landing-purchase .variations td {
+  display: block;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0;
+  border: 0;
+  text-align: left;
+  background: transparent;
+}
+.course-landing .course-landing-purchase .variations th.label label {
+  display: block;
+  margin: 0;
+  color: var(--foreground);
+  font-size: .9rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+.course-landing .course-landing-purchase .variations td.value select {
+  display: block;
+  width: 100%;
+  min-height: 3rem;
+  margin: 0;
+}
+.course-landing .course-landing-purchase .reset_variations {
+  display: inline-block;
+  margin-top: .6rem;
+  color: var(--muted-foreground);
+  font-size: .875rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.course-landing .course-landing-purchase .single_variation_wrap {
+  width: 100%;
+}
+.course-landing .course-landing-purchase .woocommerce-variation-add-to-cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+}
+.course-landing .course-landing-purchase .woocommerce-variation-add-to-cart .quantity {
+  margin: 0;
+}
+.course-landing .course-landing-purchase .woocommerce-variation-add-to-cart .qty {
+  width: 5.5rem;
+  min-height: 3rem;
+}
+.course-landing .course-landing-purchase .woocommerce-variation-add-to-cart .single_add_to_cart_button {
+  min-height: 3rem;
+  margin: 0;
+}
