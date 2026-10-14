@@ -20,11 +20,6 @@ get_header();
 				<?php yoast_breadcrumb() ?>
 			</div>
 
-			<a href="<?php echo esc_url(evg_blog_url()); ?>" class="checkout-back">
-				<?php echo evg_icon('arrow-left', 16); ?>
-				<?php esc_html_e('Все статьи', 'evgagarina'); ?>
-			</a>
-
 			<header class="article-header">
 				<?php echo evg_post_tags_html(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 				?>

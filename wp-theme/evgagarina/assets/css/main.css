@@ -2169,7 +2169,7 @@ a.bg-primary,
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
 }
-
+.breadcrumb,
 .checkout-back {
   display: inline-flex;
   align-items: center;
@@ -2178,7 +2178,7 @@ a.bg-primary,
   color: var(--muted-foreground);
   transition: color 0.15s;
 }
-
+.breadcrumb a:hover,
 .checkout-back:hover {
   color: var(--foreground);
 }
