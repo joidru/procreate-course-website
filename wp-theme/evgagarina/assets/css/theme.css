@@ -1884,3 +1884,17 @@
   background: #a69c96;
   box-shadow: none;
 }
+
+/* Closed enrollment: centered, subtly highlighted notice in the pricing card. */
+.course-landing-purchase .course-purchase-unavailable {
+  margin: 2rem 0 0;
+  padding: 1.1rem 1.25rem;
+  border: 1px dashed color-mix(in oklab, var(--muted-foreground) 45%, transparent);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--foreground) 4%, transparent);
+  color: var(--foreground);
+  font-size: .9375rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+}
