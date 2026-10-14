@@ -3,6 +3,10 @@
  * и LifterLMS, приведённая к дизайн-токенам из main.css.
  */
 
+.site-logo {
+  margin-right: 7px;
+}
+
 .checkout-panel .woocommerce-billing-fields > h3 {
   display: none;
 }
