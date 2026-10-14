@@ -1729,3 +1729,60 @@
   border: 0;
   box-shadow: none;
 }
+
+
+/* LifterLMS purchased courses — visual skin only.
+   Preserve plugin columns, clearfix, markup, image sizing and element order. */
+.llms-sd-section.llms-my-courses .llms-loop-item-content {
+  overflow: hidden;
+  border: 1px solid var(--border) !important;
+  border-radius: 1.35rem !important;
+  background: var(--card) !important;
+  box-shadow: none !important;
+  transition: border-color .2s ease;
+}
+.llms-sd-section.llms-my-courses .llms-loop-item-content:hover {
+  border-color: rgb(239 77 150 / 45%) !important;
+}
+.llms-sd-section.llms-my-courses .llms-loop-link {
+  color: var(--foreground) !important;
+  text-decoration: none !important;
+  background: transparent !important;
+}
+.llms-sd-section.llms-my-courses .llms-featured-image {
+  border-radius: 0 !important;
+}
+.llms-sd-section.llms-my-courses .llms-loop-title {
+  color: var(--foreground) !important;
+  background: transparent !important;
+  font-family: var(--font-montserrat) !important;
+  font-weight: 700 !important;
+  line-height: 1.35;
+}
+.llms-sd-section.llms-my-courses .llms-loop-item-footer {
+  border-color: var(--border) !important;
+  background: transparent !important;
+  color: var(--muted-foreground) !important;
+}
+.llms-sd-section.llms-my-courses .llms-author,
+.llms-sd-section.llms-my-courses .llms-author-info,
+.llms-sd-section.llms-my-courses .llms-meta,
+.llms-sd-section.llms-my-courses .llms-meta p {
+  color: var(--muted-foreground) !important;
+}
+.llms-sd-section.llms-my-courses .llms-progress {
+  background: transparent !important;
+  border-color: var(--border) !important;
+}
+.llms-sd-section.llms-my-courses .llms-progress .progress__indicator {
+  color: var(--foreground) !important;
+}
+.llms-sd-section.llms-my-courses .llms-progress-bar {
+  overflow: hidden;
+  border-radius: 999px !important;
+  background: rgb(239 234 229 / 12%) !important;
+}
+.llms-sd-section.llms-my-courses .llms-progress-bar .progress-bar-complete {
+  border-radius: 999px !important;
+  background: var(--primary) !important;
+}
