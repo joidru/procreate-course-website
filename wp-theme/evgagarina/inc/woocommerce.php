@@ -399,68 +399,71 @@ remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wra
 remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
 
-//Рассылка о старте продаж
-add_action('woocommerce_before_product_object_save', 'gen_send_announcement', 20, 2);
+/**
+ * Send course launch notifications only when a product becomes available.
+ * Store notification status per order and product to avoid repeat sends.
+ */
+add_action('woocommerce_product_set_stock_status', 'evg_notify_course_available', 20, 3);
 
-function gen_send_announcement($product)
+function evg_notify_course_available($product_id, $stock_status, $product)
 {
+    if ('instock' !== $stock_status || ! $product instanceof WC_Product || $product->is_type('grouped') || $product->is_type('variable')) {
+        return;
+    }
 
-	$product_id = $product->get_id();
+    // WooCommerce triggers this hook only on a stock-status transition.
+    $page = 1;
+    do {
+        $orders = wc_get_orders(array(
+            'status' => array('completed'),
+            'limit' => 100,
+            'paged' => $page,
+            'orderby' => 'date',
+            'order' => 'DESC',
+        ));
 
-	if (wp_is_post_revision($product_id) || wp_is_post_autosave($product_id)) {
-		return;
-	}
+        foreach ($orders as $order) {
+            $email = sanitize_email($order->get_billing_email());
+            if (! is_email($email)) {
+                continue;
+            }
 
-	if (!$product || $product->is_type('grouped') || $product->is_type('variable')) {
-		return;
-	}
+            $contains_product = false;
+            foreach ($order->get_items('line_item') as $item) {
+                if ((int) $item->get_product_id() === (int) $product_id || (int) $item->get_variation_id() === (int) $product_id) {
+                    $contains_product = true;
+                    break;
+                }
+            }
+            if (! $contains_product) {
+                continue;
+            }
 
-	$old_stock_status = get_post_meta($product_id, '_stock_status', true);
-	$new_stock_status = $product->get_stock_status();
+            $meta_key = '_evg_course_launch_notified_' . absint($product_id);
+            if ($order->get_meta($meta_key, true)) {
+                continue;
+            }
 
+            ob_start();
+            wc_get_template('emails/customer-preorder-available.php', array('product' => $product));
+            $message = ob_get_clean();
+            if (! $message) {
+                continue;
+            }
 
-	// Проверяем, поступил ли товар в продажу
-	if ($old_stock_status === $new_stock_status) {
-		return;
-	}
+            $sent = wp_mail(
+                $email,
+                'Старт курса «' . wp_strip_all_tags($product->get_name()) . '»',
+                $message,
+                array('Content-Type: text/html; charset=UTF-8')
+            );
 
-	// Если товар доступен и не предзаказ (onbackorder)
-	if ($new_stock_status === 'instock') {
+            if ($sent) {
+                $order->update_meta_data($meta_key, current_time('mysql', true));
+                $order->save();
+            }
+        }
 
-		// Получаем заказы с этим товаром
-		$orders = wc_get_orders([
-			'status'    => ['completed'],
-			'limit'     => -1,
-			'orderby'   => 'date',
-			'order'     => 'DESC'
-		]);
-
-		$notified_users = [];
-
-		foreach ($orders as $order) {
-			foreach ($order->get_items() as $item) {
-
-				if ($item->get_product_id() == $product_id) {
-
-					$customer_email = $order->get_billing_email();
-					if (!in_array($customer_email, $notified_users)) {
-
-						ob_start();
-						wc_get_template('emails/customer-preorder-available.php', $product);
-						$message = ob_get_clean();
-
-						// Отправляем email уведомление
-						wp_mail(
-							$customer_email,
-							'Старт курса ' . $product->get_name(),
-							$message,
-							'content-type: text/html'
-						);
-
-						$notified_users[] = $customer_email;
-					}
-				}
-			}
-		}
-	}
+        $page++;
+    } while (count($orders) === 100);
 }
