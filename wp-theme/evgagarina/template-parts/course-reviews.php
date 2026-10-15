@@ -24,7 +24,11 @@ $existing = is_user_logged_in() && evg_course_review_existing($id, get_current_u
         <div class="evg-reviews-heading__actions">
             <div class="evg-reviews-heading__row">
                 <?php if ($total) : ?><div class="evg-reviews-summary"><strong><?php echo esc_html($average); ?></strong><span><span class="evg-review-stars" aria-label="Рейтинг курса">★★★★★</span><small><?php echo esc_html(sprintf('На основе %d отзывов', $total)); ?></small></span></div><?php endif; ?>
-                <?php if ($eligible && !$existing) : ?><button type="button" class="evg-reviews-write evg-gradient-button">Написать отзыв <?php echo evg_icon('arrow-right', 16); ?></button><?php endif; ?>
+                <?php if ($eligible && !$existing) : ?>
+                    <button type="button" class="evg-reviews-write evg-gradient-button">Написать отзыв <?php echo evg_icon('arrow-right', 16); ?></button>
+                <?php elseif (!$eligible) : ?>
+                    <a href="#pricing" class="evg-gradient-button">Записаться на курс <?php echo evg_icon('arrow-right', 16); ?></a>
+                <?php endif; ?>
             </div>
             <p class="evg-reviews-eligibility">
                 <?php if ($existing) : ?>Вы уже отправили отзыв об этом курсе.
