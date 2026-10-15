@@ -122,19 +122,6 @@ $evg_start_url    = evg_start_url();
 		<?php endif; ?>
 	</section>
 	<?php get_template_part('template-parts/course-author', null, ['url' => $evg_start_url]); ?>
-
-	<?php
-	while (have_posts()) :
-		the_post();
-		if ('' !== trim(get_the_content())) :
-	?>
-			<section class="mx-auto max-w-3xl px-5 py-16 md:px-8">
-				<div class="prose"><?php the_content(); ?></div>
-			</section>
-	<?php
-		endif;
-	endwhile;
-	?>
 </main>
 <?php
 get_footer();
