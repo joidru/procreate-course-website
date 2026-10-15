@@ -2010,3 +2010,84 @@ body.evg-review-lightbox-open{overflow:hidden}
 .evg-review-detail__image img{display:block;width:100%;height:auto;max-height:22rem;object-fit:contain}
 body.evg-review-detail-open{overflow:hidden}
 @media(max-width:640px){.evg-review-detail__panel{padding:1.5rem}}
+
+/* LifterLMS — завершение урока */
+.llms-lesson-button-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  background: var(--card);
+  color: var(--foreground);
+  font-family: var(--font-montserrat), sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.llms-lesson-button-wrapper form {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.llms-lesson-button-wrapper .llms-form-field {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.llms-lesson-button-wrapper .llms-field-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: auto;
+  margin: 0;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--foreground);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.llms-lesson-button-wrapper .llms-field-button:hover {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.llms-lesson-button-wrapper .llms-field-button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.llms-lesson-button-wrapper .clear {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .llms-lesson-button-wrapper {
+    flex-direction: column;
+    padding: 1.25rem;
+  }
+
+  .llms-lesson-button-wrapper .llms-field-button {
+    width: 100%;
+  }
+}
