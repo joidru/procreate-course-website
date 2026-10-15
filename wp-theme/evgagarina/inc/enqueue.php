@@ -28,6 +28,10 @@ function evg_enqueue_assets() {
 		)
 	);
 
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		wp_enqueue_script( 'evg-course-reviews', EVG_URI . '/assets/js/course-reviews.js', array(), evg_asset_version( '/assets/js/course-reviews.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
+	}
+
 	wp_enqueue_script( 'evg-notices', EVG_URI . '/assets/js/notices.js', array( 'evg-theme' ), evg_asset_version( '/assets/js/notices.js' ), array( 'in_footer' => true, 'strategy' => 'defer' ) );
 
 	$data = array(
