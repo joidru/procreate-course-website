@@ -3,8 +3,8 @@ global $product; ?>
 <section id="pricing" class="mx-auto max-w-6xl px-5 py-16 md:px-8 md:py-24">
     <div class="overflow-hidden rounded-[2rem] border border-border bg-card">
         <div class="grid items-center md:grid-cols-2">
-            <div class="relative md:block">
-                <?php echo $product->get_image('large', array('class' => 'aspect-square w-full object-cover', 'loading' => 'lazy')); ?>
+            <div class="relative md:block h-full">
+                <?php echo $product->get_image('large', array('class' => 'aspect-square w-full object-cover h-full', 'loading' => 'lazy')); ?>
             </div>
             <div class="p-7 md:p-12">
                 <p class="text-sm font-medium text-primary">Стоимость</p>
