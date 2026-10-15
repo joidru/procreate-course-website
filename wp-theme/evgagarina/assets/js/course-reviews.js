@@ -6,6 +6,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const more = section.querySelector('.evg-reviews-more');
     const list = section.querySelector('#evg-reviews-list');
     let page = 1, loading = false, previousFocus = null;
+    // Lightweight artwork lightbox; event delegation also covers AJAX-loaded reviews.
+    const lightbox = document.createElement('div');
+    lightbox.className = 'evg-review-lightbox';
+    lightbox.hidden = true;
+    lightbox.innerHTML = '<button type="button" class="evg-review-lightbox__close" aria-label="Закрыть изображение">×</button><img alt="Работа ученика">';
+    lightbox.setAttribute('role', 'dialog');
+    lightbox.setAttribute('aria-modal', 'true');
+    lightbox.setAttribute('aria-label', 'Просмотр работы ученика');
+    document.body.appendChild(lightbox);
+    const lightboxImage = lightbox.querySelector('img');
+    const lightboxClose = lightbox.querySelector('button');
+    let lightboxTrigger = null;
+    const closeLightbox = () => {
+      if (lightbox.hidden) return;
+      lightbox.hidden = true;
+      lightboxImage.removeAttribute('src');
+      document.body.classList.remove('evg-review-lightbox-open');
+      if (lightboxTrigger) lightboxTrigger.focus();
+    };
+    section.addEventListener('click', event => {
+      const link = event.target.closest('.evg-review-card__image');
+      if (!link || !section.contains(link)) return;
+      event.preventDefault();
+      lightboxTrigger = link;
+      lightboxImage.src = link.href;
+      lightbox.hidden = false;
+      document.body.classList.add('evg-review-lightbox-open');
+      lightboxClose.focus();
+    });
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', event => { if (event.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', event => {
+      if (lightbox.hidden) return;
+      if (event.key === 'Escape') closeLightbox();
+      if (event.key === 'Tab') { event.preventDefault(); lightboxClose.focus(); }
+    });
+
     const open = () => {
       if (!modal) return;
       previousFocus = document.activeElement;
