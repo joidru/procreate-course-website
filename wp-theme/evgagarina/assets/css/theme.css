@@ -1984,3 +1984,12 @@
 body.evg-review-modal-open{overflow:hidden}
 @media(max-width:900px){.evg-reviews-heading{flex-direction:column}.evg-reviews-heading__actions{padding-top:0}.evg-reviews-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.evg-reviews-heading__row{flex-wrap:wrap}.evg-reviews-grid{grid-template-columns:1fr}.evg-review-modal__panel{padding:1.5rem}}
+
+/* Full-size artwork viewer for course reviews. */
+.evg-review-card__image{cursor:zoom-in}
+.evg-review-lightbox[hidden]{display:none!important}
+.evg-review-lightbox{position:fixed;inset:0;z-index:10001;display:flex;align-items:center;justify-content:center;padding:3.5rem 1.25rem 1.25rem;background:rgba(0,0,0,.9);cursor:zoom-out}
+.evg-review-lightbox img{display:block;max-width:100%;max-height:calc(100vh - 5rem);max-height:calc(100dvh - 5rem);width:auto;height:auto;object-fit:contain;cursor:default;border-radius:.5rem}
+.evg-review-lightbox__close{position:absolute;top:1rem;right:1.25rem;display:grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.35);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}
+.evg-review-lightbox__close:hover{background:rgba(255,255,255,.15)}
+body.evg-review-lightbox-open{overflow:hidden}
