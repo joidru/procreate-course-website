@@ -119,12 +119,11 @@ add_action('wp_ajax_evg_course_review_submit', 'evg_course_review_submit');
  * An empty ID removes the artwork from this review (the media file stays in the library).
  */
 function evg_course_review_admin_image_field($comment) {
-    if ('review' !== $comment->comment_type || 'product' !== get_post_type($comment->comment_post_ID)) return;
+    if ('product' !== get_post_type($comment->comment_post_ID)) return;
     $image_id = absint(get_comment_meta($comment->comment_ID, '_evg_review_image', true));
     wp_nonce_field('evg_review_image_' . $comment->comment_ID, 'evg_review_image_nonce');
     ?>
     <div style="padding:6px 0;max-width:650px">
-        <h3 style="margin:0 0 12px">Работа ученика</h3>
         <?php if ($image_id && wp_attachment_is_image($image_id)) : ?>
             <div style="margin-bottom:12px">
                 <?php echo wp_get_attachment_image($image_id, 'medium', false, array('style' => 'display:block;max-width:320px;width:auto;height:auto;border-radius:8px')); ?>
@@ -151,7 +150,7 @@ function evg_course_review_save_admin_image($comment_id) {
     if (!isset($_POST['evg_review_image_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['evg_review_image_nonce'])), 'evg_review_image_' . $comment_id)) return;
     if (!isset($_POST['evg_review_image_id'])) return;
     $comment = get_comment($comment_id);
-    if (!$comment || 'review' !== $comment->comment_type || 'product' !== get_post_type($comment->comment_post_ID)) return;
+    if (!$comment || 'product' !== get_post_type($comment->comment_post_ID)) return;
     $raw = trim((string) wp_unslash($_POST['evg_review_image_id']));
     if ($raw === '' || $raw === '0') {
         delete_comment_meta($comment_id, '_evg_review_image');
@@ -159,8 +158,15 @@ function evg_course_review_save_admin_image($comment_id) {
     }
     if (!ctype_digit($raw)) return;
     $image_id = absint($raw);
-    if ($image_id && wp_attachment_is_image($image_id) && get_post_status($image_id) === 'inherit') {
+    if ($image_id && wp_attachment_is_image($image_id)) {
         update_comment_meta($comment_id, '_evg_review_image', $image_id);
     }
 }
+// WordPress saves comment edits through comment.php and then applies this redirect filter.
+// Save here so the custom field is handled after the edit form is submitted.
+function evg_course_review_image_edit_redirect($location, $comment_id) {
+    evg_course_review_save_admin_image($comment_id);
+    return $location;
+}
+add_filter('comment_edit_redirect', 'evg_course_review_image_edit_redirect', 10, 2);
 add_action('edit_comment', 'evg_course_review_save_admin_image', 20);
