@@ -38,7 +38,7 @@ foreach ($evg_products as $evg_product) {
 $evg_collage = array();
 foreach ($evg_products as $evg_product) {
 	if ($evg_product->get_image_id() && count($evg_collage) < 4) {
-		$evg_collage[] = wp_get_attachment_image_url($evg_product->get_image_id(), 'evg-square');
+		$evg_collage[] = wp_get_attachment_image_url($evg_product->get_image_id(), 'large');
 	}
 }
 if (count($evg_collage) < 4) {
