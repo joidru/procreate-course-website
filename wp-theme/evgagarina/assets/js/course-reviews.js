@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;display:block;-webkit-line-clamp:unset;max-height:none;height:auto;width:' + text.clientWidth + 'px';
         card.appendChild(probe);
         const lineHeight = parseFloat(getComputedStyle(text).lineHeight) || 26;
-        button.hidden = probe.scrollHeight > lineHeight * 5 + 2;
+        button.hidden = probe.scrollHeight <= lineHeight * 5 + 2;
         probe.remove();
       });
     };
