@@ -33,7 +33,7 @@ $link_attrs = $external ? ' target="_blank" rel="noopener"' : '';
 			if ( $product->get_image_id() ) {
 				echo wp_get_attachment_image(
 					$product->get_image_id(),
-					'evg-square',
+					'medium',
 					false,
 					array(
 						'loading' => 'lazy',
