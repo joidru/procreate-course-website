@@ -43,6 +43,87 @@ document.addEventListener('DOMContentLoaded', () => {
       if (event.key === 'Tab') { event.preventDefault(); lightboxClose.focus(); }
     });
 
+    // Keep cards compact and open long reviews in a separate dialog.
+    const reviewDialog = document.createElement('div');
+    reviewDialog.className = 'evg-review-detail';
+    reviewDialog.hidden = true;
+    reviewDialog.setAttribute('role', 'dialog');
+    reviewDialog.setAttribute('aria-modal', 'true');
+    reviewDialog.setAttribute('aria-label', 'Полный отзыв ученика');
+    reviewDialog.innerHTML = '<div class="evg-review-detail__backdrop"></div><div class="evg-review-detail__panel" tabindex="-1"><button type="button" class="evg-review-detail__close" aria-label="Закрыть отзыв">×</button><div class="evg-review-detail__content"></div></div>';
+    document.body.appendChild(reviewDialog);
+    const detailPanel = reviewDialog.querySelector('.evg-review-detail__panel');
+    const detailContent = reviewDialog.querySelector('.evg-review-detail__content');
+    const detailClose = reviewDialog.querySelector('.evg-review-detail__close');
+    let detailTrigger = null;
+    const closeDetail = () => {
+      if (reviewDialog.hidden) return;
+      reviewDialog.hidden = true;
+      detailContent.replaceChildren();
+      document.body.classList.remove('evg-review-detail-open');
+      if (detailTrigger) detailTrigger.focus();
+    };
+    const updateReadButtons = () => {
+      section.querySelectorAll('.evg-review-card').forEach(card => {
+        const text = card.querySelector('.evg-review-card__text');
+        const button = card.querySelector('.evg-review-card__read');
+        if (!text || !button) return;
+        // Detect overflow by measuring an unconstrained clone, including paragraph breaks.
+        const probe = text.cloneNode(true);
+        probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;display:block;-webkit-line-clamp:unset;max-height:none;height:auto;width:' + text.clientWidth + 'px';
+        card.appendChild(probe);
+        const lineHeight = parseFloat(getComputedStyle(text).lineHeight) || 26;
+        button.hidden = probe.scrollHeight > lineHeight * 5 + 2;
+        probe.remove();
+      });
+    };
+    section.addEventListener('click', event => {
+      const button = event.target.closest('.evg-review-card__read');
+      if (!button || !section.contains(button)) return;
+      const card = button.closest('.evg-review-card');
+      detailTrigger = button;
+      detailContent.replaceChildren();
+      const header = card.querySelector('.evg-review-card__top').cloneNode(true);
+      const body = card.querySelector('.evg-review-card__text').cloneNode(true);
+      body.classList.add('evg-review-detail__text');
+      detailContent.append(header, body);
+      const artwork = card.querySelector('.evg-review-card__image');
+      if (artwork) {
+        const image = artwork.cloneNode(true);
+        image.classList.add('evg-review-detail__image');
+        detailContent.appendChild(image);
+      }
+      reviewDialog.hidden = false;
+      document.body.classList.add('evg-review-detail-open');
+      detailClose.focus();
+    });
+    detailClose.addEventListener('click', closeDetail);
+    reviewDialog.querySelector('.evg-review-detail__backdrop').addEventListener('click', closeDetail);
+    document.addEventListener('keydown', event => {
+      if (reviewDialog.hidden) return;
+      if (event.key === 'Escape') closeDetail();
+      if (event.key === 'Tab') {
+        const focusable = Array.from(detailPanel.querySelectorAll('button, a[href]')).filter(el => el.getClientRects().length);
+        if (!focusable.length) return;
+        const first = focusable[0], last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    });
+    // Images inside the full-review dialog use the existing artwork viewer.
+    reviewDialog.addEventListener('click', event => {
+      const link = event.target.closest('.evg-review-card__image');
+      if (!link) return;
+      event.preventDefault();
+      lightboxTrigger = link;
+      lightboxImage.src = link.href;
+      lightbox.hidden = false;
+      document.body.classList.add('evg-review-lightbox-open');
+      lightboxClose.focus();
+    });
+    updateReadButtons();
+    window.addEventListener('resize', updateReadButtons);
+
     const open = () => {
       if (!modal) return;
       previousFocus = document.activeElement;
@@ -106,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
         if (!result.success) throw new Error('Ошибка загрузки');
         list.insertAdjacentHTML('beforeend', result.data.html);
+        updateReadButtons();
         page++;
         if (!result.data.has_more) more.remove();
         else {
