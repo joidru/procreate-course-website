@@ -1,0 +1,52 @@
+name: Deploy WordPress theme to SpaceWeb
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spaceweb-theme-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout selected commit
+        uses: actions/checkout@v4
+
+      - name: Validate theme and SSH configuration
+        env:
+          SFTP_USER: ${{ secrets.SWEB_SSH_USER }}
+          SSH_KEY: ${{ secrets.SWEB_SSH_PRIVATE_KEY }}
+          SSH_HOST_KEY: ${{ secrets.SWEB_SSH_KNOWN_HOSTS }}
+        run: |
+          test -f wp-theme/evgagarina/style.css
+          test -n "$SFTP_USER"
+          test -n "$SSH_KEY"
+          test -n "$SSH_HOST_KEY"
+
+      - name: Configure verified SSH connection
+        env:
+          SSH_KEY: ${{ secrets.SWEB_SSH_PRIVATE_KEY }}
+          SSH_HOST_KEY: ${{ secrets.SWEB_SSH_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/id_deploy
+          chmod 600 ~/.ssh/id_deploy
+          printf '%s\n' "$SSH_HOST_KEY" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+      - name: Upload theme files
+        env:
+          SSH_USER: ${{ secrets.SWEB_SSH_USER }}
+        run: |
+          rsync -az --itemize-changes \
+            --exclude='.DS_Store' \
+            --exclude='*.map' \
+            -e "ssh -i $HOME/.ssh/id_deploy -p 22 -o StrictHostKeyChecking=yes -o BatchMode=yes" \
+            wp-theme/evgagarina/ \
+            "$SSH_USER@77.222.62.71:/home/d/drawdemygm/evgagarinacom/public_html/wp-content/themes/evgagarina/"
