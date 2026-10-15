@@ -113,3 +113,54 @@ function evg_course_review_submit()
     wp_send_json_success(array('message' => 'Спасибо! Ваш отзыв отправлен на модерацию.'));
 }
 add_action('wp_ajax_evg_course_review_submit', 'evg_course_review_submit');
+
+/**
+ * Show the attached student artwork and its media ID on the WordPress comment edit screen.
+ * An empty ID removes the artwork from this review (the media file stays in the library).
+ */
+function evg_course_review_admin_image_field($comment) {
+    if ('review' !== $comment->comment_type || 'product' !== get_post_type($comment->comment_post_ID)) return;
+    $image_id = absint(get_comment_meta($comment->comment_ID, '_evg_review_image', true));
+    wp_nonce_field('evg_review_image_' . $comment->comment_ID, 'evg_review_image_nonce');
+    ?>
+    <div style="padding:6px 0;max-width:650px">
+        <h3 style="margin:0 0 12px">Работа ученика</h3>
+        <?php if ($image_id && wp_attachment_is_image($image_id)) : ?>
+            <div style="margin-bottom:12px">
+                <?php echo wp_get_attachment_image($image_id, 'medium', false, array('style' => 'display:block;max-width:320px;width:auto;height:auto;border-radius:8px')); ?>
+                <p><a href="<?php echo esc_url(get_edit_post_link($image_id)); ?>" target="_blank" rel="noopener noreferrer">Открыть изображение в медиатеке</a></p>
+            </div>
+        <?php elseif ($image_id) : ?>
+            <p>Изображение с этим ID не найдено или файл не является картинкой.</p>
+        <?php else : ?>
+            <p>Изображение не прикреплено.</p>
+        <?php endif; ?>
+        <label for="evg_review_image_id"><strong>ID изображения в медиатеке</strong></label>
+        <input type="number" min="0" step="1" id="evg_review_image_id" name="evg_review_image_id" value="<?php echo esc_attr($image_id ?: ''); ?>" class="small-text" style="width:120px;margin-left:8px">
+        <p class="description">Укажите ID другого изображения и нажмите «Обновить». Оставьте поле пустым или введите 0, чтобы убрать картинку из отзыва. Файл в медиатеке не удаляется.</p>
+    </div>
+    <?php
+}
+function evg_course_review_register_image_box() {
+    add_meta_box('evg-review-image', 'Работа ученика', 'evg_course_review_admin_image_field', 'comment', 'normal', 'default');
+}
+add_action('add_meta_boxes_comment', 'evg_course_review_register_image_box');
+
+function evg_course_review_save_admin_image($comment_id) {
+    if (!current_user_can('edit_comment', $comment_id)) return;
+    if (!isset($_POST['evg_review_image_nonce']) || !wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['evg_review_image_nonce'])), 'evg_review_image_' . $comment_id)) return;
+    if (!isset($_POST['evg_review_image_id'])) return;
+    $comment = get_comment($comment_id);
+    if (!$comment || 'review' !== $comment->comment_type || 'product' !== get_post_type($comment->comment_post_ID)) return;
+    $raw = trim((string) wp_unslash($_POST['evg_review_image_id']));
+    if ($raw === '' || $raw === '0') {
+        delete_comment_meta($comment_id, '_evg_review_image');
+        return;
+    }
+    if (!ctype_digit($raw)) return;
+    $image_id = absint($raw);
+    if ($image_id && wp_attachment_is_image($image_id) && get_post_status($image_id) === 'inherit') {
+        update_comment_meta($comment_id, '_evg_review_image', $image_id);
+    }
+}
+add_action('edit_comment', 'evg_course_review_save_admin_image', 20);
