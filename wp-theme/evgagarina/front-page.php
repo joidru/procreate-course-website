@@ -20,8 +20,8 @@ $evg_products = function_exists('wc_get_products')
 			'status'     => 'publish',
 			'visibility' => 'catalog',
 			'limit'      => (int) apply_filters('evg_front_catalog_limit', 24),
-			'orderby'    => 'menu_order',
-			'order'      => 'ASC',
+			'orderby'    => 'date',
+			'order'      => 'DESC',
 		)
 	)
 	: array();
