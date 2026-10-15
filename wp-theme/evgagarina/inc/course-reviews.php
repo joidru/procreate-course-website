@@ -36,7 +36,7 @@ function evg_course_review_card($comment)
         </div>
         <div class="evg-review-card__text"><?php echo wpautop(esc_html($comment->comment_content)); ?></div>
         <?php if ($image_id) : ?>
-            <a class="evg-review-card__image" href="<?php echo esc_url(wp_get_attachment_url($image_id)); ?>" target="_blank" rel="noopener noreferrer">
+            <a class="evg-review-card__image" href="<?php echo esc_url(wp_get_attachment_url($image_id)); ?>" aria-label="Увеличить работу ученика">
                 <?php echo wp_get_attachment_image($image_id, 'medium_large', false, array('loading' => 'lazy', 'alt' => 'Работа ученика')); ?>
             </a>
         <?php endif; ?>
