@@ -20,6 +20,7 @@ require EVG_DIR . '/inc/enqueue.php';
 require EVG_DIR . '/inc/author.php';
 require EVG_DIR . '/inc/auth.php';
 require EVG_DIR . '/inc/ymlfeed.php';
+require EVG_DIR . '/inc/old-functions.php';
 
 if (class_exists('WooCommerce')) {
 	require EVG_DIR . '/inc/woocommerce.php';
