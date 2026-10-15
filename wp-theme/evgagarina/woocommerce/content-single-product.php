@@ -39,6 +39,7 @@ foreach ($product->get_attributes() as $attribute) {
 		get_template_part('template-parts/course-included');
 		get_template_part('template-parts/course-pricing');
 		get_template_part('template-parts/course-author', null, array('name_btn' => 'Пройти курс с Евгенией'));
+		get_template_part('template-parts/course-reviews');
 		get_template_part('template-parts/course-faq');
 		if (isset(WC()->structured_data)) {
 			WC()->structured_data->generate_product_data($product);
