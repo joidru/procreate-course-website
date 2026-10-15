@@ -1993,3 +1993,20 @@ body.evg-review-modal-open{overflow:hidden}
 .evg-review-lightbox__close{position:absolute;top:1rem;right:1.25rem;display:grid;place-items:center;width:2.5rem;height:2.5rem;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.35);color:#fff;font-size:1.8rem;line-height:1;cursor:pointer}
 .evg-review-lightbox__close:hover{background:rgba(255,255,255,.15)}
 body.evg-review-lightbox-open{overflow:hidden}
+
+/* Compact review previews and full-review dialog. */
+.evg-review-card__text{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;line-clamp:5;overflow:hidden;max-height:calc(1.7em * 5);margin-bottom:.4rem}
+.evg-review-card__read[hidden],.evg-review-detail[hidden]{display:none!important}
+.evg-review-card__read{align-self:flex-start;margin:0 0 1rem;padding:0;border:0;background:transparent;color:var(--primary);font-size:.875rem;font-weight:600;cursor:pointer}
+.evg-review-card__read:hover{text-decoration:underline}
+.evg-review-detail{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;padding:1rem}
+.evg-review-detail__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.8)}
+.evg-review-detail__panel{position:relative;width:min(100%,38rem);max-height:90vh;max-height:90dvh;overflow-y:auto;padding:2rem;border:1px solid var(--border);border-radius:1.25rem;background:var(--card);color:var(--foreground);box-shadow:0 24px 70px rgba(0,0,0,.4)}
+.evg-review-detail__close{position:absolute;top:.5rem;right:.9rem;border:0;background:transparent;color:var(--foreground);font-size:2rem;cursor:pointer}
+.evg-review-detail__content{padding-top:.5rem}
+.evg-review-detail__content .evg-review-card__top{padding-right:2rem}
+.evg-review-detail__text{display:block;max-height:none;overflow:visible;margin:1.5rem 0;line-clamp:unset;-webkit-line-clamp:unset;white-space:normal}
+.evg-review-detail__image{display:block;max-width:100%;margin-top:1rem;border-radius:.75rem;overflow:hidden}
+.evg-review-detail__image img{display:block;width:100%;height:auto;max-height:22rem;object-fit:contain}
+body.evg-review-detail-open{overflow:hidden}
+@media(max-width:640px){.evg-review-detail__panel{padding:1.5rem}}
