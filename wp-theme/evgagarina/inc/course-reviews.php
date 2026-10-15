@@ -35,6 +35,7 @@ function evg_course_review_card($comment)
             <span class="evg-review-stars" aria-label="<?php echo esc_attr(sprintf('Оценка: %d из 5', $rating)); ?>"><?php echo esc_html(str_repeat('★', $rating) . str_repeat('☆', 5 - $rating)); ?></span>
         </div>
         <div class="evg-review-card__text"><?php echo wpautop(esc_html($comment->comment_content)); ?></div>
+        <button type="button" class="evg-review-card__read" hidden>Читать полностью <span aria-hidden="true">→</span></button>
         <?php if ($image_id) : ?>
             <a class="evg-review-card__image" href="<?php echo esc_url(wp_get_attachment_url($image_id)); ?>" aria-label="Увеличить работу ученика">
                 <?php echo wp_get_attachment_image($image_id, 'medium_large', false, array('loading' => 'lazy', 'alt' => 'Работа ученика')); ?>
