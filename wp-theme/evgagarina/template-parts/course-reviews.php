@@ -50,7 +50,7 @@ $existing = is_user_logged_in() && evg_course_review_existing($id, get_current_u
                 <form class="evg-review-form" enctype="multipart/form-data">
                     <label>Ваша оценка <span class="evg-required">*</span></label>
                     <div class="evg-review-rating" role="radiogroup" aria-label="Оценка курса">
-                        <?php for ($i=1; $i<=5; $i++) : ?><label><input type="radio" name="rating" value="<?php echo esc_attr($i); ?>" <?php checked($i, 5); ?> required><span aria-label="<?php echo esc_attr($i . ' из 5'); ?>">★</span></label><?php endfor; ?>
+                        <?php for ($i=5; $i>=1; $i--) : ?><label><input type="radio" name="rating" value="<?php echo esc_attr($i); ?>" <?php checked($i, 5); ?> required><span aria-label="<?php echo esc_attr($i . ' из 5'); ?>">★</span></label><?php endfor; ?>
                     </div>
                     <label for="evg-review-body">Ваш отзыв <span class="evg-required">*</span></label>
                     <textarea id="evg-review-body" name="review" rows="5" minlength="10" maxlength="3000" required placeholder="Расскажите, что вам понравилось и чему вы научились..."></textarea>
