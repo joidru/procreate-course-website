@@ -1,4 +1,5 @@
 <?php
+
 /** Course reviews. */
 defined('ABSPATH') || exit;
 global $product;
@@ -29,7 +30,7 @@ $existing = is_user_logged_in() && evg_course_review_existing($id, get_current_u
                 <?php if ($existing) : ?>Вы уже отправили отзыв об этом курсе.
                 <?php elseif (!$eligible) : ?><?php echo evg_icon('lock', 16); ?> Оставить отзыв могут только ученики курса после покупки.
                 <?php else : ?>Поделитесь впечатлениями и покажите свою работу.
-                <?php endif; ?>
+            <?php endif; ?>
             </p>
         </div>
     </div>
@@ -40,30 +41,34 @@ $existing = is_user_logged_in() && evg_course_review_existing($id, get_current_u
         <p class="evg-reviews-empty">Пока нет отзывов об этом курсе. Станьте первым, кто поделится впечатлениями!</p>
     <?php endif; ?>
     <?php if ($eligible && !$existing) : ?>
-    <div class="evg-review-modal" hidden>
-        <div class="evg-review-modal__backdrop" data-close></div>
-        <div class="evg-review-modal__panel" role="dialog" aria-modal="true" aria-labelledby="evg-review-modal-title" tabindex="-1">
-            <button type="button" class="evg-review-modal__close" aria-label="Закрыть" data-close>×</button>
-            <div class="evg-review-form-view">
-                <h3 id="evg-review-modal-title">Написать отзыв</h3>
-                <p class="evg-review-muted">Поделитесь своим опытом — это поможет другим ученикам.</p>
-                <form class="evg-review-form" enctype="multipart/form-data">
-                    <label>Ваша оценка <span class="evg-required">*</span></label>
-                    <div class="evg-review-rating" role="radiogroup" aria-label="Оценка курса">
-                        <?php for ($i=5; $i>=1; $i--) : ?><label><input type="radio" name="rating" value="<?php echo esc_attr($i); ?>" <?php checked($i, 5); ?> required><span aria-label="<?php echo esc_attr($i . ' из 5'); ?>">★</span></label><?php endfor; ?>
-                    </div>
-                    <label for="evg-review-body">Ваш отзыв <span class="evg-required">*</span></label>
-                    <textarea id="evg-review-body" name="review" rows="5" minlength="10" maxlength="3000" required placeholder="Расскажите, что вам понравилось и чему вы научились..."></textarea>
-                    <label for="evg-review-image">Работа ученика (необязательно)</label>
-                    <input id="evg-review-image" type="file" name="review_image" accept="image/jpeg,image/png,image/webp">
-                    <small class="evg-review-muted">JPG, PNG или WebP, до 5 МБ</small>
-                    <p class="evg-review-form-error" role="alert" hidden></p>
-                    <button class="evg-gradient-button evg-review-submit" type="submit">Отправить отзыв</button>
-                    <small class="evg-review-muted">Отзыв появится после проверки модератором.</small>
-                </form>
+        <div class="evg-review-modal" hidden>
+            <div class="evg-review-modal__backdrop" data-close></div>
+            <div class="evg-review-modal__panel" role="dialog" aria-modal="true" aria-labelledby="evg-review-modal-title" tabindex="-1">
+                <button type="button" class="evg-review-modal__close" aria-label="Закрыть" data-close>×</button>
+                <div class="evg-review-form-view">
+                    <h3 id="evg-review-modal-title">Написать отзыв</h3>
+                    <p class="evg-review-muted">Поделитесь своим опытом — это поможет другим ученикам.</p>
+                    <form class="evg-review-form" enctype="multipart/form-data">
+                        <label>Ваша оценка <span class="evg-required">*</span></label>
+                        <div class="evg-review-rating" role="radiogroup" aria-label="Оценка курса">
+                            <?php for ($i = 5; $i >= 1; $i--) : ?><label><input type="radio" name="rating" value="<?php echo esc_attr($i); ?>" <?php checked($i, 5); ?> required><span aria-label="<?php echo esc_attr($i . ' из 5'); ?>">★</span></label><?php endfor; ?>
+                        </div>
+                        <label for="evg-review-body">Ваш отзыв <span class="evg-required">*</span></label>
+                        <textarea id="evg-review-body" name="review" rows="5" minlength="10" maxlength="3000" required placeholder="Расскажите, что вам понравилось и чему вы научились..."></textarea>
+                        <label for="evg-review-image">Работа ученика (необязательно)</label>
+                        <input id="evg-review-image" type="file" name="review_image" accept="image/jpeg,image/png,image/webp">
+                        <small class="evg-review-muted">JPG, PNG или WebP, до 5 МБ</small>
+                        <p class="evg-review-form-error" role="alert" hidden></p>
+                        <button class="evg-gradient-button evg-review-submit" type="submit">Отправить отзыв</button>
+                        <small class="evg-review-muted">Отзыв появится после проверки модератором.</small>
+                    </form>
+                </div>
+                <div class="evg-review-success" hidden>
+                    <div class="evg-review-success__icon">✓</div>
+                    <h3>Спасибо за ваш отзыв!</h3>
+                    <p>Мы отправили его на модерацию. После проверки он появится на странице курса.</p><button type="button" class="evg-gradient-button" data-close>Закрыть</button>
+                </div>
             </div>
-            <div class="evg-review-success" hidden><div class="evg-review-success__icon">✓</div><h3>Спасибо за ваш отзыв!</h3><p>Мы отправили его на модерацию. После проверки он появится на странице курса.</p><button type="button" class="evg-gradient-button" data-close>Закрыть</button></div>
         </div>
-    </div>
     <?php endif; ?>
 </section>

@@ -1,26 +1,33 @@
 <?php
+
 /** Course-specific WooCommerce reviews and submissions. */
 defined('ABSPATH') || exit;
 
-function evg_course_review_can_post($product_id) {
+function evg_course_review_can_post($product_id)
+{
     if (!is_user_logged_in() || !function_exists('wc_customer_bought_product')) return false;
     $user = wp_get_current_user();
     return wc_customer_bought_product($user->user_email, $user->ID, $product_id);
 }
 
-function evg_course_review_existing($product_id, $user_id) {
+function evg_course_review_existing($product_id, $user_id)
+{
     $comments = get_comments(array(
-        'post_id' => $product_id, 'user_id' => $user_id,
-        'type' => 'review', 'status' => 'all', 'count' => true,
+        'post_id' => $product_id,
+        'user_id' => $user_id,
+        'type' => 'review',
+        'status' => 'all',
+        'count' => true,
     ));
     return (int) $comments > 0;
 }
 
-function evg_course_review_card($comment) {
+function evg_course_review_card($comment)
+{
     $rating = max(1, min(5, (int) get_comment_meta($comment->comment_ID, 'rating', true)));
     $image_id = absint(get_comment_meta($comment->comment_ID, '_evg_review_image', true));
     $name = $comment->comment_author;
-    ?>
+?>
     <article class="evg-review-card">
         <div class="evg-review-card__top">
             <?php echo get_avatar($comment, 44, '', '', array('class' => 'evg-review-avatar')); ?>
@@ -29,22 +36,28 @@ function evg_course_review_card($comment) {
         </div>
         <div class="evg-review-card__text"><?php echo wpautop(esc_html($comment->comment_content)); ?></div>
         <?php if ($image_id) : ?>
-        <a class="evg-review-card__image" href="<?php echo esc_url(wp_get_attachment_url($image_id)); ?>" target="_blank" rel="noopener noreferrer">
-            <?php echo wp_get_attachment_image($image_id, 'medium_large', false, array('loading' => 'lazy', 'alt' => 'Работа ученика')); ?>
-        </a>
+            <a class="evg-review-card__image" href="<?php echo esc_url(wp_get_attachment_url($image_id)); ?>" target="_blank" rel="noopener noreferrer">
+                <?php echo wp_get_attachment_image($image_id, 'medium_large', false, array('loading' => 'lazy', 'alt' => 'Работа ученика')); ?>
+            </a>
         <?php endif; ?>
     </article>
-    <?php
+<?php
 }
 
-function evg_course_reviews_fetch() {
+function evg_course_reviews_fetch()
+{
     check_ajax_referer('evg_course_reviews', 'nonce');
     $product_id = absint($_POST['product_id'] ?? 0);
     $page = max(1, absint($_POST['page'] ?? 1));
     if ('product' !== get_post_type($product_id) || 'publish' !== get_post_status($product_id)) wp_send_json_error('Курс не найден.', 404);
     $query = new WP_Comment_Query(array(
-        'post_id' => $product_id, 'type' => 'review', 'status' => 'approve',
-        'number' => 3, 'offset' => ($page - 1) * 3, 'orderby' => 'comment_date_gmt', 'order' => 'DESC',
+        'post_id' => $product_id,
+        'type' => 'review',
+        'status' => 'approve',
+        'number' => 3,
+        'offset' => ($page - 1) * 3,
+        'orderby' => 'comment_date_gmt',
+        'order' => 'DESC',
     ));
     ob_start();
     foreach ($query->comments as $comment) evg_course_review_card($comment);
@@ -55,7 +68,8 @@ function evg_course_reviews_fetch() {
 add_action('wp_ajax_evg_course_reviews_more', 'evg_course_reviews_fetch');
 add_action('wp_ajax_nopriv_evg_course_reviews_more', 'evg_course_reviews_fetch');
 
-function evg_course_review_submit() {
+function evg_course_review_submit()
+{
     check_ajax_referer('evg_course_reviews', 'nonce');
     $product_id = absint($_POST['product_id'] ?? 0);
     if ('product' !== get_post_type($product_id) || 'publish' !== get_post_status($product_id)) wp_send_json_error('Курс не найден.', 404);
